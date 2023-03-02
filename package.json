@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@htmlacademy/cra-template-typescript": "^5.0.0"
+  }
+}
