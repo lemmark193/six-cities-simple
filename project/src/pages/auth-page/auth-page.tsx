@@ -1,6 +1,11 @@
+import {Helmet} from 'react-helmet-async';
+
 function AuthPage(): JSX.Element {
   return (
     <main className="page__main page__main--login">
+      <Helmet>
+        <title>Login | Six Cities</title>
+      </Helmet>
       <div className="page__login-container container">
         <section className="login">
           <h1 className="login__title">Sign in</h1>
@@ -18,7 +23,7 @@ function AuthPage(): JSX.Element {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
+            <a className="locations__item-link" href="#TODO">
               <span>Amsterdam</span>
             </a>
           </div>
