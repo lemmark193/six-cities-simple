@@ -1,15 +1,17 @@
+import {Helmet} from 'react-helmet-async';
 import {useParams} from 'react-router-dom';
 
 function RoomPage(): JSX.Element {
   const {id} = useParams();
 
-  if (id) {
-    // eslint-disable-next-line no-console
-    console.log('offer-id:', id);
-  }
+  const idAdditionString = id ? ` - ${id}` : '';
+  const titleText = `Offer${idAdditionString} | Six Cities`;
 
   return (
     <main className="page__main page__main--property">
+      <Helmet>
+        <title>{titleText}</title>
+      </Helmet>
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">

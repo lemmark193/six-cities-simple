@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet-async';
 import AdCard from '../../components/ad-card/ad-card';
 
 type MainPageProps = {
@@ -7,6 +8,9 @@ type MainPageProps = {
 function MainPage({adsCount}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
+      <Helmet>
+        <title>Six Cities</title>
+      </Helmet>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">

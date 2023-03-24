@@ -1,5 +1,6 @@
 // React
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {HelmetProvider} from 'react-helmet-async';
 
 // Components & Pages
 import Layout from '../layout/layout';
@@ -17,18 +18,20 @@ type AppProps = {
 
 function App({adsCount}: AppProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={AppRoute.Root} element={<Layout/>}>
-          <Route index element={<MainPage adsCount={adsCount}/>} />
-          <Route path={AppRoute.Login} element={<AuthPage />} />
-          <Route path={AppRoute.Room} element={<RoomPage />}>
-            <Route path=":id" element={<RoomPage />}/>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path={AppRoute.Root} element={<Layout/>}>
+            <Route index element={<MainPage adsCount={adsCount}/>} />
+            <Route path={AppRoute.Login} element={<AuthPage />} />
+            <Route path={AppRoute.Room} element={<RoomPage />}>
+              <Route path=":id" element={<RoomPage />}/>
+            </Route>
           </Route>
-        </Route>
-        <Route path="*" element={<NotFoundPage />}/>
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFoundPage />}/>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
