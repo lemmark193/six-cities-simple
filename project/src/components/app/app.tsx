@@ -22,7 +22,9 @@ function App({adsCount}: AppProps): JSX.Element {
         <Route path={AppRoute.Root} element={<Layout/>}>
           <Route index element={<MainPage adsCount={adsCount}/>} />
           <Route path={AppRoute.Login} element={<AuthPage />} />
-          <Route path={AppRoute.Room} element={<RoomPage />} />
+          <Route path={AppRoute.Room} element={<RoomPage />}>
+            <Route path=":id" element={<RoomPage />}/>
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />}/>
       </Routes>

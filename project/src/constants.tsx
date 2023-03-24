@@ -1,7 +1,7 @@
 const AppRoute = {
   Root: '/',
   Login: '/login',
-  Room: '/offer/:id',
+  Room: '/offer',
 } as const;
 
 export {

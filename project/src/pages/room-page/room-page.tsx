@@ -1,4 +1,13 @@
+import {useParams} from 'react-router-dom';
+
 function RoomPage(): JSX.Element {
+  const {id} = useParams();
+
+  if (id) {
+    // eslint-disable-next-line no-console
+    console.log('offer-id:', id);
+  }
+
   return (
     <main className="page__main page__main--property">
       <section className="property">
