@@ -6,6 +6,7 @@ import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import AuthPage from '../../pages/auth-page/auth-page';
 import RoomPage from '../../pages/room-page/room-page';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
 // Constants
 import {AppRoute} from '../../constants';
@@ -23,6 +24,7 @@ function App({adsCount}: AppProps): JSX.Element {
           <Route path={AppRoute.Login} element={<AuthPage />} />
           <Route path={AppRoute.Room} element={<RoomPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />}/>
       </Routes>
     </BrowserRouter>
   );
