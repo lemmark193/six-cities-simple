@@ -1,6 +1,6 @@
 import {OfferType} from '../constants';
 
-type Offer = {
+export type Offer = {
   id: number;
   photo: string;
   price: number;

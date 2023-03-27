@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
-const MainPageSetting = {
-  AdsCount: 5,
-} as const;
+// data
+import {offers} from './mocks/offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -12,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App adsCount={MainPageSetting.AdsCount}/>
+    <App offers={offers}/>
   </React.StrictMode>,
 );

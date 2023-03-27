@@ -1,11 +1,16 @@
 import {Helmet} from 'react-helmet-async';
+
+// Components
 import AdCard from '../../components/ad-card/ad-card';
 
+// Types
+import {Offers} from '../../types/offers';
+
 type MainPageProps = {
-  adsCount: number;
+  offers: Offers;
 }
 
-function MainPage({adsCount}: MainPageProps): JSX.Element {
+function MainPage({offers}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <Helmet>
@@ -69,7 +74,7 @@ function MainPage({adsCount}: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {Array(adsCount).fill(<AdCard />)}
+              {offers.map((offer) => <AdCard key={offer.id} offer={offer}/>)}
             </div>
           </section>
           <div className="cities__right-section">

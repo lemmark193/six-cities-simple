@@ -12,11 +12,14 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 // Constants
 import {AppRoute, AuthStatus} from '../../constants';
 
+// Types
+import {Offers} from '../../types/offers';
+
 type AppProps = {
-  adsCount: number;
+  offers: Offers;
 }
 
-function App({adsCount}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -24,14 +27,14 @@ function App({adsCount}: AppProps): JSX.Element {
           <Route path={AppRoute.Root} element={<Layout/>}>
             <Route
               index
-              element={<MainPage adsCount={adsCount}/>}
+              element={<MainPage offers={offers}/>}
             />
 
             <Route
               path={AppRoute.Login}
               element={
                 <PrivateRoute authStatus={AuthStatus.NoAuth}>
-                  <MainPage adsCount={adsCount}/>
+                  <MainPage offers={offers}/>
                 </PrivateRoute>
               }
             />
