@@ -8,7 +8,7 @@ type AdCardProps = {
   offer: Offer;
 }
 
-function AdCard({offer}: AdCardProps): JSX.Element {
+function OfferCard({offer}: AdCardProps): JSX.Element {
   const {
     photo,
     price,
@@ -57,4 +57,4 @@ function AdCard({offer}: AdCardProps): JSX.Element {
   );
 }
 
-export default AdCard;
+export default OfferCard;

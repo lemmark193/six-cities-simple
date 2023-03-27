@@ -1,5 +1,5 @@
 // Components
-import AdCard from '../ad-card/ad-card';
+import OfferCard from '../offer-card/offer-card';
 
 // Types
 import {Offers} from '../../types/offers';
@@ -29,7 +29,7 @@ function OffersSection({offers}: OffersSectionProps): JSX.Element {
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => <AdCard key={offer.id} offer={offer} />)}
+        {offers.map((offer) => <OfferCard key={offer.id} offer={offer} />)}
       </div>
     </section>
   );
