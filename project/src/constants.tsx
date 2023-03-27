@@ -10,7 +10,15 @@ enum AuthStatus {
   Unknown = 'UNKNOWN',
 }
 
+enum OfferType {
+  Apartment = 'apartment',
+  Room = 'room',
+  House = 'house',
+  Hotel = 'hotel',
+}
+
 export {
   AppRoute,
   AuthStatus,
+  OfferType,
 };
