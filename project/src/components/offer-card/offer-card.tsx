@@ -1,5 +1,7 @@
+import {Link} from 'react-router-dom';
+
 // Constants
-import {RATING_MAX_VALUE} from '../../constants';
+import {RATING_MAX_VALUE, AppRoute} from '../../constants';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -26,15 +28,17 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
     </div>
   );
 
+  const roomLink = `${AppRoute.Room}/${id}`;
+
   return (
     <article className="cities__card place-card" onMouseEnter={() => handleMouseEnter(id)}>
 
       {isPremium && (premiumMarkElement)}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#TODO">
+        <Link to={roomLink}>
           <img className="place-card__image" src={photo} width="260" height="200" alt={type} />
-        </a>
+        </Link>
       </div>
 
       <div className="place-card__info">
@@ -51,7 +55,7 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#TODO">{headline}</a>
+          <Link to={roomLink}>{headline}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
