@@ -6,10 +6,12 @@ import {Offer} from '../../types/offers';
 
 type AdCardProps = {
   offer: Offer;
+  handleMouseEnter: (id: number) => void;
 }
 
-function OfferCard({offer}: AdCardProps): JSX.Element {
+function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
   const {
+    id,
     photo,
     price,
     rating,
@@ -25,7 +27,7 @@ function OfferCard({offer}: AdCardProps): JSX.Element {
   );
 
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseEnter={() => handleMouseEnter(id)}>
 
       {isPremium && (premiumMarkElement)}
 
