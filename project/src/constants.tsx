@@ -17,7 +17,6 @@ enum OfferType {
   Hotel = 'hotel',
 }
 
-
 const RATING_MAX_VALUE = 5;
 
 export {

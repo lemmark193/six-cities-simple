@@ -2,10 +2,10 @@ import {OfferType} from '../constants';
 
 export type Offer = {
   id: number;
-  photo: string;
+  previewImage: string;
   price: number;
   rating: number;
-  headline: string;
+  title: string;
   type: OfferType;
   isPremium: boolean;
 }

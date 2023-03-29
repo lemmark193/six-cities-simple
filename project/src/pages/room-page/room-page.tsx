@@ -10,6 +10,7 @@ function RoomPage(): JSX.Element {
   const idAdditionString = id ? ` - ${id}` : '';
   const titleText = `Offer${idAdditionString} | Six Cities`;
 
+  // TODO: Заполнить данные предложения по аренде
   return (
     <main className="page__main page__main--property">
       <Helmet>

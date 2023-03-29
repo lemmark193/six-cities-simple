@@ -41,6 +41,7 @@ function ReviewForm(): JSX.Element {
         {rating.map((title, order) => {
           const value = order + 1;
 
+          // TODO: Вынести в компонент
           return (
             <>
               <input className="form__rating-input visually-hidden"

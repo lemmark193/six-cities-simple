@@ -14,14 +14,15 @@ type AdCardProps = {
 function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
   const {
     id,
-    photo,
+    previewImage,
     price,
     rating,
-    headline,
+    title,
     type,
     isPremium,
   } = offer;
 
+  // TODO: Можно оставить в переменной?
   const premiumMarkElement = (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -37,7 +38,7 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={roomLink}>
-          <img className="place-card__image" src={photo} width="260" height="200" alt={type} />
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt={type} />
         </Link>
       </div>
 
@@ -55,7 +56,7 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={roomLink}>{headline}</Link>
+          <Link to={roomLink}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
