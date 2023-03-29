@@ -4,30 +4,46 @@ import {HelmetProvider} from 'react-helmet-async';
 
 // Components & Pages
 import Layout from '../layout/layout';
+import PrivateRoute from '../private-route/private-route';
 import MainPage from '../../pages/main-page/main-page';
-import AuthPage from '../../pages/auth-page/auth-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
 // Constants
-import {AppRoute} from '../../constants';
+import {AppRoute, AuthStatus} from '../../constants';
+
+// Types
+import {Offers} from '../../types/offers';
 
 type AppProps = {
-  adsCount: number;
+  offers: Offers;
 }
 
-function App({adsCount}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Layout/>}>
-            <Route index element={<MainPage adsCount={adsCount}/>} />
-            <Route path={AppRoute.Login} element={<AuthPage />} />
+            <Route
+              index
+              element={<MainPage offers={offers}/>}
+            />
+
+            <Route
+              path={AppRoute.Login}
+              element={
+                <PrivateRoute authStatus={AuthStatus.NoAuth}>
+                  <MainPage offers={offers}/>
+                </PrivateRoute>
+              }
+            />
+
             <Route path={AppRoute.Room} element={<RoomPage />}>
               <Route path=":id" element={<RoomPage />}/>
             </Route>
           </Route>
+
           <Route path="*" element={<NotFoundPage />}/>
         </Routes>
       </BrowserRouter>
