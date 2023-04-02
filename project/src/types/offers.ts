@@ -6,13 +6,13 @@ type Location = {
   zoom: number;
 }
 
-type CityInfo = {
+export type CityInfo = {
   location: Location;
   name: string;
 }
 
 export type CitiesEnum = {
-  [cityName: string]: CityInfo,
+  [cityName: string]: CityInfo;
 }
 
 export type Offer = {
