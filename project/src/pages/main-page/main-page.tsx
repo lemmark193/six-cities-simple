@@ -2,15 +2,17 @@ import {Helmet} from 'react-helmet-async';
 
 // Components
 import OffersSection from '../../components/offers-section/offers-section';
+import Map from '../../components/map/map';
 
 // Types
-import {Offers} from '../../types/offers';
+import {Offers, CityInfo} from '../../types/offers';
 
 type MainPageProps = {
   offers: Offers;
+  city: CityInfo;
 }
 
-function MainPage({offers}: MainPageProps): JSX.Element {
+function MainPage({offers, city}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <Helmet>
@@ -57,7 +59,7 @@ function MainPage({offers}: MainPageProps): JSX.Element {
         <div className="cities__places-container container">
           <OffersSection offers={offers} />
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <Map city={city} offers={offers} />
           </div>
         </div>
       </div>
