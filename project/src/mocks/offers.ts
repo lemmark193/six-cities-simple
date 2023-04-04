@@ -18,7 +18,7 @@ export const offers: Offers = [{
   description: 'Beautiful & luxurious apartment at great location. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
   goods: ['Wi-Fi', 'Heating', 'Kitchen', 'Fridge', 'Washing machine', 'Coffee machine', 'Dishwasher', 'Towels', 'Baby seat', 'Cabel TV'],
   host: {
-    avatarUrl: 'avatar-angelina.jpg',
+    avatarUrl: 'img/avatar-angelina.jpg',
     id: 3,
     isPro: true,
     name: 'Angelina',
