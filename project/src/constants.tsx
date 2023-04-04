@@ -1,7 +1,7 @@
 enum AppRoute {
   Root = '/',
   Login = '/login',
-  Room = '/offer',
+  Room = '/offer/:id',
 }
 
 enum AuthStatus {

@@ -1,7 +1,11 @@
+// Components
 import {Link} from 'react-router-dom';
 
 // Constants
-import {RATING_MAX_VALUE, AppRoute} from '../../constants';
+import {AppRoute} from '../../constants';
+
+// Utils
+import {getStarsBarWidth} from '../../utils';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -22,14 +26,13 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
     isPremium,
   } = offer;
 
-  // TODO: Можно оставить в переменной?
   const premiumMarkElement = (
     <div className="place-card__mark">
       <span>Premium</span>
     </div>
   );
 
-  const roomLink = `${AppRoute.Room}/${id}`;
+  const roomLink = AppRoute.Room.replace(':id', id.toString());
 
   return (
     <article className="cities__card place-card" onMouseEnter={() => handleMouseEnter(id)}>
@@ -51,7 +54,7 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating / RATING_MAX_VALUE * 100}%`}}></span>
+            <span style={{ width: getStarsBarWidth(rating)}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
