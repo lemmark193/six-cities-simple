@@ -24,10 +24,26 @@ const UrlMapMarker = {
 
 const RATING_MAX_VALUE = 5;
 
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 export {
   AppRoute,
   AuthStatus,
   OfferType,
   UrlMapMarker,
   RATING_MAX_VALUE,
+  MONTHS,
 };

@@ -14,13 +14,15 @@ import {AppRoute, AuthStatus} from '../../constants';
 
 // Types
 import {Offers, CitiesEnum} from '../../types/offers';
+import {Reviews} from '../../types/reviews';
 
 type AppProps = {
   offers: Offers;
   cities: CitiesEnum;
+  reviews: Reviews;
 }
 
-function App({offers, cities}: AppProps): JSX.Element {
+function App({offers, cities, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -40,7 +42,10 @@ function App({offers, cities}: AppProps): JSX.Element {
               }
             />
 
-            <Route path={AppRoute.Room} element={<RoomPage offers={offers} />} />
+            <Route
+              path={AppRoute.Room}
+              element={<RoomPage offers={offers} reviews={reviews} />}
+            />
           </Route>
 
           <Route path="*" element={<NotFoundPage />}/>

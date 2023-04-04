@@ -1,4 +1,4 @@
-import {RATING_MAX_VALUE} from './constants';
+import {RATING_MAX_VALUE, MONTHS} from './constants';
 
 export const getStarsBarWidth = (
   rating: number,
@@ -11,4 +11,16 @@ export const getThingsCountString = (
 ): string => {
   const thingsString = count === 1 ? oneThingString : (manyThingsString || `${oneThingString}s`);
   return `${count} ${thingsString}`;
+};
+
+export const convertDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const monthIndex = date.getMonth();
+  const day = date.getDate();
+
+  return {
+    datetime: `${year}-${monthIndex + 1}-${day}`,
+    humanized: `${MONTHS[monthIndex]} ${year}`,
+  };
 };

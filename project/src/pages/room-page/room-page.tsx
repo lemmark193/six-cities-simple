@@ -9,16 +9,19 @@ import ReviewForm from '../../components/review-form/review-form';
 
 // Types
 import {Offer, Offers} from '../../types/offers';
+import {Reviews} from '../../types/reviews';
 
 type RoomPageProps = {
   offers: Offers;
+  reviews: Reviews;
 }
 
+// TODO: Вынести в `utils`
 function findOfferById(offers: Offers, id: number): Offer | undefined {
   return offers.find((offer) => offer.id === id);
 }
 
-function RoomPage({offers}: RoomPageProps): JSX.Element {
+function RoomPage({offers, reviews}: RoomPageProps): JSX.Element {
   const {id} = useParams();
   const offer = id && findOfferById(offers, +id);
 
@@ -38,7 +41,7 @@ function RoomPage({offers}: RoomPageProps): JSX.Element {
       <section className="property">
         <DetailedOffer offer={offer}>
           <section className="property__reviews reviews">
-            <ReviewsList />
+            <ReviewsList reviews={reviews} />
             <ReviewForm />
           </section>
         </DetailedOffer>
