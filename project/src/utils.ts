@@ -1,8 +1,4 @@
-import {RATING_MAX_VALUE, MONTHS} from './constants';
-
-export const getStarsBarWidth = (
-  rating: number,
-): string => `${Math.round(rating) / RATING_MAX_VALUE * 100}%`;
+import {MONTHS} from './constants';
 
 export const getThingsCountString = (
   count: number,

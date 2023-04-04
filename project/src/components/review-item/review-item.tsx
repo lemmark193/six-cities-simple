@@ -1,5 +1,6 @@
+import RatingBar from '../rating-bar/rating-bar';
 import {Review} from '../../types/reviews';
-import {getStarsBarWidth, convertDate} from '../../utils';
+import {convertDate} from '../../utils';
 
 type ReviewProps = {
   review: Review;
@@ -25,12 +26,7 @@ function ReviewItem({review}: ReviewProps): JSX.Element {
         </span>
       </div>
       <div className="reviews__info">
-        <div className="reviews__rating rating">
-          <div className="reviews__stars rating__stars">
-            <span style={{ width: getStarsBarWidth(rating) }}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <RatingBar rating={rating} blockClassName='reviews' />
         <p className="reviews__text">
           {comment}
         </p>

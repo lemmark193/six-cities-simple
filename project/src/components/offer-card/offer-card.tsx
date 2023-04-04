@@ -1,11 +1,9 @@
 // Components
 import {Link} from 'react-router-dom';
+import RatingBar from '../rating-bar/rating-bar';
 
 // Constants
 import {AppRoute} from '../../constants';
-
-// Utils
-import {getStarsBarWidth} from '../../utils';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -52,12 +50,9 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: getStarsBarWidth(rating)}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+
+        <RatingBar rating={rating} blockClassName='place-card' />
+
         <h2 className="place-card__name">
           <Link to={roomLink}>{title}</Link>
         </h2>

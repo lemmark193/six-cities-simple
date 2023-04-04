@@ -1,9 +1,12 @@
 // Components
 import {Fragment} from 'react';
-import {Offer} from '../../types/offers';
+import RatingBar from '../rating-bar/rating-bar';
 
 // Utils
-import {getStarsBarWidth, getThingsCountString} from '../../utils';
+import {getThingsCountString} from '../../utils';
+
+// Types
+import {Offer} from '../../types/offers';
 
 type DetailedOfferProps = {
   offer: Offer;
@@ -60,13 +63,7 @@ function DetailedOffer({offer, children}: DetailedOfferProps): JSX.Element {
             </h1>
           </div>
 
-          <div className="property__rating rating">
-            <div className="property__stars rating__stars">
-              <span style={{width: getStarsBarWidth(rating)}}></span>
-              <span className="visually-hidden">Rating</span>
-            </div>
-            <span className="property__rating-value rating__value">{rating}</span>
-          </div>
+          <RatingBar rating={rating} blockClassName='property' isVisibleValue/>
 
           <ul className="property__features">
             <li className="property__feature property__feature--entire">
