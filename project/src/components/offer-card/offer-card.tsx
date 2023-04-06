@@ -11,9 +11,10 @@ import {Offer} from '../../types/offers';
 type AdCardProps = {
   offer: Offer;
   handleMouseEnter: (id: number) => void;
+  blockClassName: string;
 }
 
-function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
+function OfferCard({offer, handleMouseEnter, blockClassName}: AdCardProps): JSX.Element {
   const {
     id,
     previewImage,
@@ -33,7 +34,7 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
   const roomLink = AppRoute.Room.replace(':id', id.toString());
 
   return (
-    <article className="cities__card place-card" onMouseEnter={() => handleMouseEnter(id)}>
+    <article className={`${blockClassName}__card place-card`} onMouseEnter={() => handleMouseEnter(id)}>
 
       {isPremium && (premiumMarkElement)}
 

@@ -8,13 +8,14 @@ import {Offers} from '../../types/offers';
 
 type OffersListProps = {
   offers: Offers;
+  blockClassName: string;
 }
 
 type OffersState = {
   active: number | null;
 }
 
-function OffersList({offers}: OffersListProps): JSX.Element {
+function OffersList({offers, blockClassName}: OffersListProps): JSX.Element {
   const [offerState, setOfferState] = useState<OffersState>({
     active: null,
   });
@@ -42,6 +43,7 @@ function OffersList({offers}: OffersListProps): JSX.Element {
           key={offer.id}
           offer={offer}
           handleMouseEnter={handleMouseEnter}
+          blockClassName={blockClassName}
         />
       ))}
     </Fragment>
