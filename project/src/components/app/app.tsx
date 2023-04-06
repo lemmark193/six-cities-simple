@@ -23,6 +23,8 @@ type AppProps = {
 }
 
 function App({offers, cities, reviews}: AppProps): JSX.Element {
+  const city = cities.Amsterdam;
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -37,14 +39,14 @@ function App({offers, cities, reviews}: AppProps): JSX.Element {
               path={AppRoute.Login}
               element={
                 <PrivateRoute authStatus={AuthStatus.NoAuth}>
-                  <MainPage offers={offers} city={cities.Amsterdam}/>
+                  <MainPage offers={offers} city={city}/>
                 </PrivateRoute>
               }
             />
 
             <Route
               path={AppRoute.Room}
-              element={<RoomPage offers={offers} reviews={reviews} />}
+              element={<RoomPage offers={offers} city={city} reviews={reviews} />}
             />
           </Route>
 

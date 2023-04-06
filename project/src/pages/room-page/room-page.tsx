@@ -6,13 +6,15 @@ import NotFoundPage from '../not-found-page/not-found-page';
 import DetailedOffer from '../../components/detailed-offer/detailed-offer';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
+import Map from '../../components/map/map';
 
 // Types
-import {Offer, Offers} from '../../types/offers';
+import {CityInfo, Offer, Offers} from '../../types/offers';
 import {Reviews} from '../../types/reviews';
 
 type RoomPageProps = {
   offers: Offers;
+  city: CityInfo;
   reviews: Reviews;
 }
 
@@ -21,7 +23,7 @@ function findOfferById(offers: Offers, id: number): Offer | undefined {
   return offers.find((offer) => offer.id === id);
 }
 
-function RoomPage({offers, reviews}: RoomPageProps): JSX.Element {
+function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
   const {id} = useParams();
   const offer = id && findOfferById(offers, +id);
 
@@ -31,6 +33,10 @@ function RoomPage({offers, reviews}: RoomPageProps): JSX.Element {
 
   const idAdditionString = id ? ` - ${id}` : '';
   const titleText = `Offer${idAdditionString} | Six Cities`;
+
+  const nearOffers = offers
+    .filter((offerItem) => offerItem !== offer)
+    .slice(0, 3);
 
   // TODO: Заполнить данные предложения по аренде
   return (
@@ -45,7 +51,7 @@ function RoomPage({offers, reviews}: RoomPageProps): JSX.Element {
             <ReviewForm />
           </section>
         </DetailedOffer>
-        <section className="property__map map"></section>
+        <Map offers={nearOffers} city={city} blockClassName='property'/>
       </section>
       <div className="container">
         <section className="near-places places">

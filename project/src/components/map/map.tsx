@@ -16,6 +16,7 @@ import {UrlMapMarker} from '../../constants';
 type MapProps = {
   city: CityInfo;
   offers: Offers;
+  blockClassName: string;
 }
 
 const iconDefault = new Icon({
@@ -30,7 +31,7 @@ const iconDefault = new Icon({
 //   iconAnchor: [14, 40],
 // });
 
-function Map({city, offers}: MapProps): JSX.Element {
+function Map({city, offers, blockClassName}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -54,7 +55,7 @@ function Map({city, offers}: MapProps): JSX.Element {
   }, [map, offers]);
 
   return (
-    <section className="cities__map map" ref={mapRef} />
+    <section className={`${blockClassName}__map map`} ref={mapRef} />
   );
 }
 
