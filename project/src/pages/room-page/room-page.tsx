@@ -19,7 +19,6 @@ type RoomPageProps = {
   reviews: Reviews;
 }
 
-// TODO: Вынести в `utils`
 function findOfferById(offers: Offers, id: number): Offer | undefined {
   return offers.find((offer) => offer.id === id);
 }
@@ -36,12 +35,12 @@ function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
     .filter((offerItem) => offerItem !== offer)
     .slice(0, 3);
 
-  // TODO: Заполнить данные предложения по аренде
   return (
     <main className="page__main page__main--property">
       <Helmet>
         <title>{`${offer.title} | Six Cities`}</title>
       </Helmet>
+
       <section className="property">
         <DetailedOffer offer={offer}>
           <section className="property__reviews reviews">
@@ -51,6 +50,7 @@ function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
         </DetailedOffer>
         <Map offers={nearOffers} city={city} blockClassName='property'/>
       </section>
+
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
