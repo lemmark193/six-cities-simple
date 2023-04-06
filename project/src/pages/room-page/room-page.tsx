@@ -31,9 +31,6 @@ function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
     return <NotFoundPage />;
   }
 
-  const idAdditionString = id ? ` - ${id}` : '';
-  const titleText = `Offer${idAdditionString} | Six Cities`;
-
   const nearOffers = offers
     .filter((offerItem) => offerItem !== offer)
     .slice(0, 3);
@@ -42,7 +39,7 @@ function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
   return (
     <main className="page__main page__main--property">
       <Helmet>
-        <title>{titleText}</title>
+        <title>{`${offer.title} | Six Cities`}</title>
       </Helmet>
       <section className="property">
         <DetailedOffer offer={offer}>
