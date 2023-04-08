@@ -6,9 +6,10 @@ import {Offers} from '../../types/offers';
 
 type OffersSectionProps = {
   offers: Offers;
+  blockClassName: string;
 }
 
-function OffersSection({offers}: OffersSectionProps): JSX.Element {
+function OffersSection({offers, blockClassName}: OffersSectionProps): JSX.Element {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
@@ -29,7 +30,7 @@ function OffersSection({offers}: OffersSectionProps): JSX.Element {
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        <OffersList offers={offers} />
+        <OffersList offers={offers} blockClassName={blockClassName} />
       </div>
     </section>
   );

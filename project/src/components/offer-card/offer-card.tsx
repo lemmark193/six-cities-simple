@@ -1,7 +1,9 @@
+// Components
 import {Link} from 'react-router-dom';
+import RatingBar from '../rating-bar/rating-bar';
 
 // Constants
-import {RATING_MAX_VALUE, AppRoute} from '../../constants';
+import {AppRoute} from '../../constants';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -9,9 +11,10 @@ import {Offer} from '../../types/offers';
 type AdCardProps = {
   offer: Offer;
   handleMouseEnter: (id: number) => void;
+  blockClassName: string;
 }
 
-function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
+function OfferCard({offer, handleMouseEnter, blockClassName}: AdCardProps): JSX.Element {
   const {
     id,
     previewImage,
@@ -22,17 +25,16 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
     isPremium,
   } = offer;
 
-  // TODO: Можно оставить в переменной?
   const premiumMarkElement = (
     <div className="place-card__mark">
       <span>Premium</span>
     </div>
   );
 
-  const roomLink = `${AppRoute.Room}/${id}`;
+  const roomLink = AppRoute.Room.replace(':id', id.toString());
 
   return (
-    <article className="cities__card place-card" onMouseEnter={() => handleMouseEnter(id)}>
+    <article className={`${blockClassName}__card place-card`} onMouseEnter={() => handleMouseEnter(id)}>
 
       {isPremium && (premiumMarkElement)}
 
@@ -49,12 +51,9 @@ function OfferCard({offer, handleMouseEnter}: AdCardProps): JSX.Element {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating / RATING_MAX_VALUE * 100}%`}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+
+        <RatingBar rating={rating} blockClassName='place-card' />
+
         <h2 className="place-card__name">
           <Link to={roomLink}>{title}</Link>
         </h2>
