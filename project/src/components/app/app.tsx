@@ -9,21 +9,23 @@ import MainPage from '../../pages/main-page/main-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
+// Hooks & functions
+import {useAppSelector} from '../../hooks/useAppSelector';
+import {selectByCity} from '../../store/selector';
+
 // Constants
 import {AppRoute, AuthStatus} from '../../constants';
 
 // Types
-import {Offers, CitiesEnum} from '../../types/offers';
 import {Reviews} from '../../types/reviews';
 
 type AppProps = {
-  offers: Offers;
-  cities: CitiesEnum;
   reviews: Reviews;
 }
 
-function App({offers, cities, reviews}: AppProps): JSX.Element {
-  const city = cities.Amsterdam;
+function App({reviews}: AppProps): JSX.Element {
+  const city = useAppSelector((state) => state.city);
+  const offers = useAppSelector((state) => selectByCity(state));
 
   return (
     <HelmetProvider>
@@ -32,7 +34,7 @@ function App({offers, cities, reviews}: AppProps): JSX.Element {
           <Route path={AppRoute.Root} element={<Layout/>}>
             <Route
               index
-              element={<MainPage offers={offers} city={cities.Amsterdam}/>}
+              element={<MainPage offers={offers} city={city}/>}
             />
 
             <Route
