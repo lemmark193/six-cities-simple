@@ -1,4 +1,4 @@
-import {MONTHS} from './constants';
+import {MONTHS, AVATAR_URL, PICTURE_URL} from './constants';
 
 export const getThingsCountString = (
   count: number,
@@ -20,3 +20,12 @@ export const convertDate = (dateString: string) => {
     humanized: `${MONTHS[monthIndex]} ${year}`,
   };
 };
+
+export const generateAvatar = (size: number): string =>
+  `${AVATAR_URL}${size}/?rnd=${Math.random()}`;
+
+export const generatePicture = (width: number, height: number): string =>
+  `${PICTURE_URL}${width}/${height}?r=${Math.random()}`;
+
+export const generateImagesList = (count: number, width: number, height: number): string[] =>
+  Array.from({length: count}, () => generatePicture(width, height));
