@@ -21,7 +21,7 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
 
       <h1 className="visually-hidden">Cities</h1>
 
-      <TabsList />
+      <TabsList city={city} />
 
       <div className="cities">
         <div className="cities__places-container container">
