@@ -1,19 +1,22 @@
 // Components
 import OffersList from '../offers-list/offers-list';
 
+import {getThingsCountString} from '../../utils';
+
 // Types
-import {Offers} from '../../types/offers';
+import {CityInfo, Offers} from '../../types/offers';
 
 type OffersSectionProps = {
+  city: CityInfo;
   offers: Offers;
   blockClassName: string;
 }
 
-function OffersSection({offers, blockClassName}: OffersSectionProps): JSX.Element {
+function OffersSection({city, offers, blockClassName}: OffersSectionProps): JSX.Element {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+      <b className="places__found">{getThingsCountString(offers.length, 'place')} to stay in {city.name}</b>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>

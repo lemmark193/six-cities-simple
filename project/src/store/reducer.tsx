@@ -3,7 +3,7 @@ import {createReducer} from '@reduxjs/toolkit';
 import {changeCity} from './action';
 
 const initialState = {
-  city: City.Amsterdam,
+  city: City.Paris,
   offers,
 };
 

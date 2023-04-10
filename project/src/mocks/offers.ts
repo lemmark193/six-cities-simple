@@ -41,7 +41,7 @@ export const City: CitiesEnum = {
   Hamburg: {
     location: {
       latitude: 53.551086,
-      longitude: 6.783333,
+      longitude: 9.993682,
       zoom: 10,
     },
     name: 'Hamburg',
@@ -49,7 +49,7 @@ export const City: CitiesEnum = {
   Dusseldorf: {
     location: {
       latitude: 51.233334,
-      longitude: 9.993682,
+      longitude: 6.783333,
       zoom: 10,
     },
     name: 'Dusseldorf'
@@ -79,8 +79,8 @@ export const offers: Offers = [{
   images: getImagesUrlList(),
   isPremium: false,
   location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
+    latitude: 51.233334,
+    longitude: 6.783333,
     zoom: 10,
   },
   maxAdults: 5,
@@ -104,8 +104,8 @@ export const offers: Offers = [{
   images: getImagesUrlList(),
   isPremium: false,
   location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
+    latitude: 53.551086,
+    longitude: 9.993682,
     zoom: 10,
   },
   maxAdults: 5,
@@ -129,8 +129,8 @@ export const offers: Offers = [{
   images: getImagesUrlList(),
   isPremium: false,
   location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
+    latitude: 50.850346,
+    longitude: 4.351721,
     zoom: 10,
   },
   maxAdults: 5,
@@ -154,8 +154,8 @@ export const offers: Offers = [{
   images: getImagesUrlList(),
   isPremium: false,
   location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
+    latitude: 50.935173,
+    longitude: 6.953101,
     zoom: 10,
   },
   maxAdults: 5,
@@ -179,8 +179,8 @@ export const offers: Offers = [{
   images: getImagesUrlList(),
   isPremium: false,
   location: {
-    latitude: 52.3909553943508,
-    longitude: 4.85309666406198,
+    latitude: 48.85661,
+    longitude: 2.351499,
     zoom: 10,
   },
   maxAdults: 5,
