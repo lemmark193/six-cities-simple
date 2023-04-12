@@ -100,7 +100,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Alice',
   },
-  id: 1,
+  id: 2,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -125,7 +125,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Alice',
   },
-  id: 1,
+  id: 3,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -150,7 +150,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Alice',
   },
-  id: 1,
+  id: 4,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -175,7 +175,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Alice',
   },
-  id: 1,
+  id: 5,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -200,7 +200,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Angelina',
   },
-  id: 1,
+  id: 6,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -225,7 +225,7 @@ export const offers: Offers = [{
     isPro: false,
     name: 'Anna',
   },
-  id: 2,
+  id: 7,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -250,7 +250,7 @@ export const offers: Offers = [{
     isPro: false,
     name: 'Alex',
   },
-  id: 3,
+  id: 8,
   images: getImagesUrlList(),
   isPremium: false,
   location: {
@@ -275,7 +275,7 @@ export const offers: Offers = [{
     isPro: true,
     name: 'Max',
   },
-  id: 4,
+  id: 9,
   images: getImagesUrlList(),
   isPremium: true,
   location: {
