@@ -1,5 +1,3 @@
-import {useParams} from 'react-router-dom';
-
 // Components
 import {Helmet} from 'react-helmet-async';
 import NotFoundPage from '../not-found-page/not-found-page';
@@ -8,6 +6,10 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
 import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
+
+// Hooks
+import {useParams} from 'react-router-dom';
+import {useAppSelector} from '../../hooks/useAppSelector';
 
 // Types
 import {CityInfo, Offer, Offers} from '../../types/offers';
@@ -25,7 +27,8 @@ function findOfferById(offers: Offers, id: number): Offer | undefined {
 
 function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
   const {id} = useParams();
-  const offer = id && findOfferById(offers, +id);
+  const allOffers = useAppSelector((state) => state.offers);
+  const offer = id && findOfferById(allOffers, +id);
 
   if (!offer) {
     return <NotFoundPage />;
