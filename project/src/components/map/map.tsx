@@ -3,7 +3,7 @@ import {useEffect, useRef} from 'react';
 import useMap from '../../hooks/useMap';
 
 // Leaflet
-import {Icon, Marker} from 'leaflet';
+import {Icon, LayerGroup, Marker} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // Types
@@ -34,10 +34,15 @@ const iconDefault = new Icon({
 function Map({city, offers, blockClassName}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+  const markersGroupRef = useRef<LayerGroup | null>(null);
 
   useEffect(() => {
     if (map === null) {
       return;
+    }
+
+    if (markersGroupRef.current === null) {
+      markersGroupRef.current = new LayerGroup().addTo(map);
     }
 
     for (const offer of offers) {
@@ -50,12 +55,22 @@ function Map({city, offers, blockClassName}: MapProps): JSX.Element {
 
       marker
         .setIcon(iconDefault)
-        .addTo(map);
+        .addTo(markersGroupRef.current);
     }
+
+    return () => {
+      markersGroupRef.current?.clearLayers();
+    };
   }, [map, offers]);
 
   return (
-    <section className={`${blockClassName}__map map`} ref={mapRef} />
+    <section
+      className={`${blockClassName}__map map`}
+      ref={mapRef}
+      style={{
+        height: '800px',
+      }}
+    />
   );
 }
 
