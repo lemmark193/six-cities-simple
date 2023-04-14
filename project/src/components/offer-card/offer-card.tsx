@@ -5,16 +5,19 @@ import RatingBar from '../rating-bar/rating-bar';
 // Constants
 import {AppRoute} from '../../constants';
 
+// Hooks & Functions
+import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {setActiveOfferId} from '../../store/action';
+
 // Types
 import {Offer} from '../../types/offers';
 
 type AdCardProps = {
   offer: Offer;
-  handleMouseEnter: (id: number) => void;
   blockClassName: string;
 }
 
-function OfferCard({offer, handleMouseEnter, blockClassName}: AdCardProps): JSX.Element {
+function OfferCard({offer, blockClassName}: AdCardProps): JSX.Element {
   const {
     id,
     previewImage,
@@ -25,6 +28,12 @@ function OfferCard({offer, handleMouseEnter, blockClassName}: AdCardProps): JSX.
     isPremium,
   } = offer;
 
+  const dispatch = useAppDispatch();
+
+  const mouseEnterHandler = (): void => {
+    dispatch(setActiveOfferId(id));
+  };
+
   const premiumMarkElement = (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -34,7 +43,7 @@ function OfferCard({offer, handleMouseEnter, blockClassName}: AdCardProps): JSX.
   const roomLink = AppRoute.Room.replace(':id', id.toString());
 
   return (
-    <article className={`${blockClassName}__card place-card`} onMouseEnter={() => handleMouseEnter(id)}>
+    <article className={`${blockClassName}__card place-card`} onMouseEnter={mouseEnterHandler}>
 
       {isPremium && (premiumMarkElement)}
 
