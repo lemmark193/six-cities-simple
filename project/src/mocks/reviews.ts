@@ -1,6 +1,9 @@
 import {Reviews} from '../types/reviews';
+import {generateAvatar} from '../utils';
 
 const DATE_DEFAULT = new Date('2023-03-03').toString();
+
+const AVATAR_SIZE = 54;
 
 export const reviews: Reviews = [{
   comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -8,7 +11,7 @@ export const reviews: Reviews = [{
   id: 1,
   rating: 3,
   user: {
-    avatarUrl: 'img/avatar-max.jpg',
+    avatarUrl: generateAvatar(AVATAR_SIZE),
     id: 10,
     isPro: true,
     name: 'Joe',
@@ -19,7 +22,7 @@ export const reviews: Reviews = [{
   id: 2,
   rating: 1,
   user: {
-    avatarUrl: 'img/avatar-max.jpg',
+    avatarUrl: generateAvatar(AVATAR_SIZE),
     id: 10,
     isPro: false,
     name: 'Sam',
@@ -30,7 +33,7 @@ export const reviews: Reviews = [{
   id: 3,
   rating: 2,
   user: {
-    avatarUrl: 'img/avatar-max.jpg',
+    avatarUrl: generateAvatar(AVATAR_SIZE),
     id: 10,
     isPro: false,
     name: 'Sean',

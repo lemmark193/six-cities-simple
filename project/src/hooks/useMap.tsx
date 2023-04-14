@@ -17,21 +17,15 @@ function useMap(
   const [map, setMap] = useState<MapResult>(null);
   const isRenderedRef = useRef<boolean>(false);
 
+  const {latitude, longitude, zoom} = city.location;
+
   useEffect(() => {
     if (mapRef.current === null || isRenderedRef.current) {
       return;
     }
 
-    const {latitude, longitude, zoom} = city.location;
-
     // Map instance
-    const mapInstance = new Map(mapRef.current, {
-      center: {
-        lat: latitude,
-        lng: longitude,
-      },
-      zoom,
-    });
+    const mapInstance = new Map(mapRef.current);
 
     // Layer
     const layer = new TileLayer(
@@ -45,6 +39,15 @@ function useMap(
 
     setMap(mapInstance);
     isRenderedRef.current = true;
+  }, [map, city]);
+
+  useEffect(() => {
+    if (map === null) {
+      return;
+    }
+
+    map.setView([latitude, longitude], zoom);
+
   }, [map, city]);
 
   return map;

@@ -21,11 +21,11 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
 
       <h1 className="visually-hidden">Cities</h1>
 
-      <TabsList />
+      <TabsList city={city} />
 
       <div className="cities">
         <div className="cities__places-container container">
-          <OffersSection offers={offers} blockClassName='cities' />
+          <OffersSection city={city} offers={offers} blockClassName='cities' />
           <div className="cities__right-section">
             <Map city={city} offers={offers} blockClassName='cities' />
           </div>
