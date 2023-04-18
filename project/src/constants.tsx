@@ -4,6 +4,10 @@ enum AppRoute {
   Room = '/offer/:id',
 }
 
+enum APIRoute {
+  Offers = '/hotels',
+}
+
 enum AuthStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -45,6 +49,7 @@ const PICTURE_URL = 'http://picsum.photos/';
 
 export {
   AppRoute,
+  APIRoute,
   AuthStatus,
   OfferType,
   UrlMapMarker,

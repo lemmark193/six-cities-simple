@@ -7,6 +7,11 @@ import App from './components/app/app';
 import {reviews} from './mocks/reviews';
 import {store} from './store/store';
 
+// functions
+import {fetchOffersAction} from './store/api-actions';
+
+store.dispatch(fetchOffersAction());
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
