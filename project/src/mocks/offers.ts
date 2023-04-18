@@ -5,7 +5,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 48.85661,
       longitude: 2.351499,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Paris',
   },
@@ -13,7 +13,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 50.935173,
       longitude: 6.953101,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Cologne',
   },
@@ -21,7 +21,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 50.850346,
       longitude: 4.351721,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Brussels',
   },
@@ -29,7 +29,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 53.551086,
       longitude: 9.993682,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Hamburg',
   },
@@ -37,7 +37,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 51.233334,
       longitude: 6.783333,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Dusseldorf'
   },
@@ -45,7 +45,7 @@ export const City: CitiesEnum = {
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
-      zoom: 10,
+      zoom: 13,
     },
     name: 'Amsterdam',
   },
