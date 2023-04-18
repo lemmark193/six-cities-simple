@@ -45,8 +45,6 @@ const MONTHS = [
 
 const AVATAR_URL = 'https://i.pravatar.cc/';
 
-const PICTURE_URL = 'http://picsum.photos/';
-
 export {
   AppRoute,
   APIRoute,
@@ -56,5 +54,4 @@ export {
   RATING_MAX_VALUE,
   MONTHS,
   AVATAR_URL,
-  PICTURE_URL,
 };
