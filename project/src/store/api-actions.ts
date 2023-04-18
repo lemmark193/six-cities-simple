@@ -12,11 +12,7 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
 }>(
   'fetchOffersAction',
   async (_arg, {dispatch, extra: api}) => {
-    // eslint-disable-next-line
-    console.log('fetch');
     const {data} = await api.get<Offers>(APIRoute.Offers);
-    // eslint-disable-next-line
-    console.log('data');
     dispatch(loadOffers(data));
   },
 );
