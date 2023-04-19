@@ -4,6 +4,10 @@ enum AppRoute {
   Room = '/offer/:id',
 }
 
+enum APIRoute {
+  Offers = '/hotels',
+}
+
 enum AuthStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -41,15 +45,13 @@ const MONTHS = [
 
 const AVATAR_URL = 'https://i.pravatar.cc/';
 
-const PICTURE_URL = 'http://picsum.photos/';
-
 export {
   AppRoute,
+  APIRoute,
   AuthStatus,
   OfferType,
   UrlMapMarker,
   RATING_MAX_VALUE,
   MONTHS,
   AVATAR_URL,
-  PICTURE_URL,
 };
