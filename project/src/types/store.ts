@@ -1,3 +1,4 @@
+import {AuthStatus} from '../constants';
 import {store} from '../store/store';
 import {CityInfo, Offers} from './offers';
 
@@ -10,6 +11,7 @@ export type State = {
   activeOfferId: ActiveOfferId;
   offers: Offers;
   isOffersLoading: OffersLoadingStatus;
+  authStatus: AuthStatus;
 };
 
 export type AppDispatch = typeof store.dispatch;

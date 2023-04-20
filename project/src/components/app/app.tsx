@@ -14,7 +14,7 @@ import {useAppSelector} from '../../hooks/useAppSelector';
 import {selectByCity} from '../../store/selector';
 
 // Constants
-import {AppRoute, AuthStatus} from '../../constants';
+import {AppRoute} from '../../constants';
 
 // Types
 import {Reviews} from '../../types/reviews';
@@ -40,7 +40,7 @@ function App({reviews}: AppProps): JSX.Element {
             <Route
               path={AppRoute.Login}
               element={
-                <PrivateRoute authStatus={AuthStatus.NoAuth}>
+                <PrivateRoute>
                   <MainPage offers={offers} city={city}/>
                 </PrivateRoute>
               }
