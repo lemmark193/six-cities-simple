@@ -16,15 +16,6 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     dispatch(setOffersLoadingStatus(true));
 
-    // TODO: Удалить закомментированный код
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    // setTimeout(async () => {
-    //   const {data} = await api.get<Offers>(APIRoute.Offers);
-
-    //   dispatch(loadOffers(data));
-    //   dispatch(setOffersLoadingStatus(false));
-    // }, 4000);
-
     const {data} = await api.get<Offers>(APIRoute.Offers);
 
     dispatch(loadOffers(data));
@@ -46,7 +37,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
     } catch {
       dispatch(requireAuth(AuthStatus.NoAuth));
     }
-  }
+  },
 );
 
 export const loginAction = createAsyncThunk<void, AuthData, {

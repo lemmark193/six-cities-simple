@@ -8,6 +8,7 @@ import PrivateRoute from '../private-route/private-route';
 import MainPage from '../../pages/main-page/main-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
+import AuthPage from '../../pages/auth-page/auth-page';
 
 // Hooks & functions
 import {useAppSelector} from '../../hooks/useAppSelector';
@@ -18,7 +19,6 @@ import {AppRoute} from '../../constants';
 
 // Types
 import {Reviews} from '../../types/reviews';
-import AuthPage from '../../pages/auth-page/auth-page';
 
 type AppProps = {
   reviews: Reviews;
