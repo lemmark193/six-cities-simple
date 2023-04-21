@@ -1,13 +1,21 @@
 import {City} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, loadOffers, setActiveOfferId, setOffersLoadingStatus} from './action';
+import {
+  changeCity,
+  loadOffers,
+  requireAuth,
+  setActiveOfferId,
+  setOffersLoadingStatus
+} from './action';
 import {State} from '../types/store';
+import {AuthStatus} from '../constants';
 
 const initialState: State = {
   city: City.Paris,
   activeOfferId: null,
   offers: [],
   isOffersLoading: false,
+  authStatus: AuthStatus.Unknown,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -23,5 +31,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setActiveOfferId, (state, action) => {
       state.activeOfferId = action.payload;
+    })
+    .addCase(requireAuth, (state, action) => {
+      state.authStatus = action.payload;
     });
 });

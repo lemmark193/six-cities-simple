@@ -8,13 +8,14 @@ import PrivateRoute from '../private-route/private-route';
 import MainPage from '../../pages/main-page/main-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
+import AuthPage from '../../pages/auth-page/auth-page';
 
 // Hooks & functions
 import {useAppSelector} from '../../hooks/useAppSelector';
 import {selectByCity} from '../../store/selector';
 
 // Constants
-import {AppRoute, AuthStatus} from '../../constants';
+import {AppRoute} from '../../constants';
 
 // Types
 import {Reviews} from '../../types/reviews';
@@ -40,8 +41,8 @@ function App({reviews}: AppProps): JSX.Element {
             <Route
               path={AppRoute.Login}
               element={
-                <PrivateRoute authStatus={AuthStatus.NoAuth}>
-                  <MainPage offers={offers} city={city}/>
+                <PrivateRoute>
+                  <AuthPage />
                 </PrivateRoute>
               }
             />

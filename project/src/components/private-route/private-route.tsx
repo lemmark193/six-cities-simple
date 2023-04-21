@@ -1,17 +1,25 @@
-import AuthPage from '../../pages/auth-page/auth-page';
-import {AuthStatus} from '../../constants';
+import {AppRoute, AuthStatus} from '../../constants';
+import {useAppSelector} from '../../hooks/useAppSelector';
+import {useNavigate} from 'react-router-dom';
+import {useLayoutEffect} from 'react';
 
 type PrivateRouteProps = {
   children: JSX.Element;
-  authStatus: AuthStatus;
 }
 
-function PrivateRoute({children, authStatus}: PrivateRouteProps): JSX.Element {
-  return (
-    authStatus === AuthStatus.Auth
-      ? children
-      : <AuthPage />
-  );
+function PrivateRoute({children}: PrivateRouteProps): JSX.Element {
+  const authStatus = useAppSelector((state) => state.authStatus);
+  const isAuth = authStatus === AuthStatus.Auth;
+
+  const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    if (isAuth) {
+      navigate(AppRoute.Root);
+    }
+  }, [authStatus]);
+
+  return children;
 }
 
 export default PrivateRoute;
