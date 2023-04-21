@@ -18,6 +18,7 @@ import {AppRoute} from '../../constants';
 
 // Types
 import {Reviews} from '../../types/reviews';
+import AuthPage from '../../pages/auth-page/auth-page';
 
 type AppProps = {
   reviews: Reviews;
@@ -41,7 +42,7 @@ function App({reviews}: AppProps): JSX.Element {
               path={AppRoute.Login}
               element={
                 <PrivateRoute>
-                  <MainPage offers={offers} city={city}/>
+                  <AuthPage />
                 </PrivateRoute>
               }
             />

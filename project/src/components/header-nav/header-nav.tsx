@@ -1,18 +1,11 @@
 import {Link} from 'react-router-dom';
+import Logout from '../logout/logout';
 import {AppRoute, AuthStatus} from '../../constants';
 import {useAppSelector} from '../../hooks/useAppSelector';
 
 function HeaderNav(): JSX.Element {
   const authStatus = useAppSelector((state) => state.authStatus);
   const isAuth = authStatus === AuthStatus.Auth;
-
-  const signoutElement = (
-    <li className="header__nav-item">
-      <Link className="header__nav-link" to="#">
-        <span className="header__signout">Sign out</span>
-      </Link>
-    </li>
-  );
 
   return (
     <nav className="header__nav">
@@ -27,7 +20,7 @@ function HeaderNav(): JSX.Element {
           </Link>
         </li>
 
-        {isAuth && signoutElement}
+        {isAuth && <Logout />}
       </ul>
     </nav>
   );
