@@ -29,6 +29,11 @@ const UrlMapMarker = {
   Active: 'img/pin-active.svg',
 } as const;
 
+const ReviewFormFieldName = {
+  Rating: 'rating',
+  Review: 'review',
+} as const;
+
 const RATING_MAX_VALUE = 5;
 
 const MONTHS = [
@@ -54,6 +59,7 @@ export {
   AuthStatus,
   OfferType,
   UrlMapMarker,
+  ReviewFormFieldName,
   RATING_MAX_VALUE,
   MONTHS,
   AVATAR_URL,

@@ -1,14 +1,5 @@
-import {useState, ChangeEvent} from 'react';
-
-const ElementName = {
-  Rating: 'rating',
-  Review: 'review',
-} as const;
-
-type StateType = {
-  [ElementName.Rating]: number;
-  [ElementName.Review]: string;
-}
+import {useReviewFormState} from '../../hooks/useReviewFormState';
+import {ReviewFormFieldName} from '../../constants';
 
 const rating = [
   'terribly',
@@ -19,23 +10,10 @@ const rating = [
 ] as const;
 
 function ReviewForm(): JSX.Element {
-  const [state, setState] = useState<StateType>({
-    [ElementName.Rating]: 0,
-    [ElementName.Review]: '',
-  });
-
-  function changeHandler({target}: ChangeEvent<HTMLFormElement>): void {
-    const {name, value} = target;
-
-    setState({
-      ...state,
-      // FIXME: сузить тип `value` (обрабатывать эл-ты формы отдельно?)
-      [name]: value as string | number,
-    });
-  }
+  const [state, handleChange] = useReviewFormState();
 
   return (
-    <form className="reviews__form form" action="#" method="post" onChange={changeHandler}>
+    <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {rating.map((title, order) => {
@@ -46,10 +24,11 @@ function ReviewForm(): JSX.Element {
             <>
               <input className="form__rating-input visually-hidden"
                 type="radio"
-                name={ElementName.Rating}
+                name={ReviewFormFieldName.Rating}
                 value={value}
                 id={`${value}-stars`}
-                checked={state[ElementName.Rating] === value}
+                checked={state[ReviewFormFieldName.Rating] === value}
+                onChange={handleChange}
               />
               <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={title}>
                 <svg className="form__star-image" width="37" height="33">
@@ -63,9 +42,10 @@ function ReviewForm(): JSX.Element {
 
       <textarea className="reviews__textarea form__textarea"
         id="review"
-        name={ElementName.Review}
-        value={state[ElementName.Review]}
+        name={ReviewFormFieldName.Review}
+        value={state[ReviewFormFieldName.Review]}
         placeholder="Tell how was your stay, what you like and what can be improved"
+        onInput={handleChange}
       />
 
       <div className="reviews__button-wrapper">
