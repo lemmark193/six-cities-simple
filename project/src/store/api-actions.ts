@@ -1,9 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {APIRoute, AuthStatus} from '../constants';
-import {loadOffers, requireAuth, setOffersLoadingStatus} from './action';
+import {loadNearOffers, loadOfferById, loadOfferReviews, loadOffers, requireAuth, setCurrentOfferLoadingStatus, setOffersLoadingStatus} from './action';
 import {removeToken, saveToken} from '../services/token';
-import {Offers} from '../types/offers';
+import {Offer, Offers} from '../types/offers';
+import {Reviews} from '../types/reviews';
 import {AppDispatch, State} from '../types/store';
 import {AuthData, UserData} from '../types/auth';
 
@@ -23,6 +24,28 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   },
 );
 
+export const fetchOfferByIdAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'fetchOfferById',
+  async (id, {dispatch, extra: api}) => {
+    dispatch(setCurrentOfferLoadingStatus(true));
+
+    const [offer, reviews, nearOffers] = await Promise.all([
+      api.get<Offer>(`${APIRoute.Offers}/${id}`),
+      api.get<Reviews>(`${APIRoute.Reviews}/${id}`),
+      api.get<Offers>(`${APIRoute.Offers}/${id}/nearby`),
+    ]);
+
+    dispatch(loadOfferById(offer.data));
+    dispatch(loadOfferReviews(reviews.data));
+    dispatch(loadNearOffers(nearOffers.data));
+
+    dispatch(setCurrentOfferLoadingStatus(false));
+  }
+);
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

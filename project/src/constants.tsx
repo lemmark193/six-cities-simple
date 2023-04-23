@@ -8,6 +8,7 @@ enum APIRoute {
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+  Reviews = '/comments',
 }
 
 enum AuthStatus {
