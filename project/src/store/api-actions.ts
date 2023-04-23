@@ -33,17 +33,23 @@ export const fetchOfferByIdAction = createAsyncThunk<void, number, {
   async (id, {dispatch, extra: api}) => {
     dispatch(setCurrentOfferLoadingStatus(true));
 
-    const [offer, reviews, nearOffers] = await Promise.all([
-      api.get<Offer>(`${APIRoute.Offers}/${id}`),
-      api.get<Reviews>(`${APIRoute.Reviews}/${id}`),
-      api.get<Offers>(`${APIRoute.Offers}/${id}/nearby`),
-    ]);
+    try {
+      const [offer, reviews, nearOffers] = await Promise.all([
+        api.get<Offer>(`${APIRoute.Offers}/${id}`),
+        api.get<Reviews>(`${APIRoute.Reviews}/${id}`),
+        api.get<Offers>(`${APIRoute.Offers}/${id}/nearby`),
+      ]);
 
-    dispatch(loadOfferById(offer.data));
-    dispatch(loadOfferReviews(reviews.data));
-    dispatch(loadNearOffers(nearOffers.data));
-
-    dispatch(setCurrentOfferLoadingStatus(false));
+      dispatch(loadOfferById(offer.data));
+      dispatch(loadOfferReviews(reviews.data));
+      dispatch(loadNearOffers(nearOffers.data));
+    } catch(error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+    } finally {
+      dispatch(setCurrentOfferLoadingStatus(false));
+    }
   }
 );
 

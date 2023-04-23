@@ -2,6 +2,7 @@ import {City} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeCity,
+  loadNearOffers,
   loadOfferById,
   loadOfferReviews,
   loadOffers,
@@ -46,6 +47,9 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOfferReviews, (state, action) => {
       state.currentOfferReviews = action.payload;
+    })
+    .addCase(loadNearOffers, (state, action) => {
+      state.nearOffers = action.payload;
     })
     .addCase(setCurrentOfferLoadingStatus, (state, action) => {
       state.isCurrentOfferLoading = action.payload;

@@ -17,14 +17,7 @@ import {selectByCity} from '../../store/selector';
 // Constants
 import {AppRoute} from '../../constants';
 
-// Types
-import {Reviews} from '../../types/reviews';
-
-type AppProps = {
-  reviews: Reviews;
-}
-
-function App({reviews}: AppProps): JSX.Element {
+function App(): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => selectByCity(state));
 
@@ -49,7 +42,7 @@ function App({reviews}: AppProps): JSX.Element {
 
             <Route
               path={AppRoute.Room}
-              element={<RoomPage offers={offers} city={city} reviews={reviews} />}
+              element={<RoomPage />}
             />
           </Route>
 

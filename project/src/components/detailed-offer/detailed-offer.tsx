@@ -44,7 +44,7 @@ function DetailedOffer({offer, children}: DetailedOfferProps): JSX.Element {
     <Fragment>
       <div className="property__gallery-container container">
         <div className="property__gallery">
-          {images.map((image) => (
+          {images.slice(0, 6).map((image) => (
             // FIXME: `key` - сделать уникальное значение
             <div className="property__image-wrapper" key={`${image}`}>
               <img className="property__image" src={image} alt={type} />

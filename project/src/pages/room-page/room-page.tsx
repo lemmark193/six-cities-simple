@@ -1,6 +1,7 @@
 // Components
 import {Helmet} from 'react-helmet-async';
 import NotFoundPage from '../not-found-page/not-found-page';
+import LoadingMessage from '../../components/loading-message/loading-message';
 import DetailedOffer from '../../components/detailed-offer/detailed-offer';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
@@ -9,34 +10,19 @@ import OffersList from '../../components/offers-list/offers-list';
 
 // Hooks
 import {useParams} from 'react-router-dom';
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useRoomData} from '../../hooks/useRoomData';
 
-// Types
-import {CityInfo, Offer, Offers} from '../../types/offers';
-import {Reviews} from '../../types/reviews';
+function RoomPage(): JSX.Element {
+  const {id} = useParams() as {id: string};
+  const {offer, reviews, nearOffers, isLoading} = useRoomData(+id);
 
-type RoomPageProps = {
-  offers: Offers;
-  city: CityInfo;
-  reviews: Reviews;
-}
-
-function findOfferById(offers: Offers, id: number): Offer | undefined {
-  return offers.find((offer) => offer.id === id);
-}
-
-function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
-  const {id} = useParams();
-  const allOffers = useAppSelector((state) => state.offers);
-  const offer = id && findOfferById(allOffers, +id);
-
-  if (!offer) {
-    return <NotFoundPage />;
+  if (isLoading) {
+    return <LoadingMessage />;
   }
 
-  const nearOffers = offers
-    .filter((offerItem) => offerItem !== offer)
-    .slice(0, 3);
+  if (offer === null) {
+    return <NotFoundPage />;
+  }
 
   return (
     <main className="page__main page__main--property">
@@ -51,7 +37,7 @@ function RoomPage({offers, city, reviews}: RoomPageProps): JSX.Element {
             <ReviewForm />
           </section>
         </DetailedOffer>
-        <Map offers={nearOffers} city={city} blockClassName='property'/>
+        <Map offers={nearOffers} city={offer.city} blockClassName='property'/>
       </section>
 
       <div className="container">

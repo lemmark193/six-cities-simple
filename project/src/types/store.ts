@@ -7,13 +7,15 @@ export type ActiveOfferId = number | null;
 
 export type LoadingStatus = boolean;
 
+export type CurrentOffer = Offer | null;
+
 export type State = {
   city: CityInfo;
   activeOfferId: ActiveOfferId;
   offers: Offers;
   isOffersLoading: LoadingStatus;
 
-  currentOffer: Offer | null;
+  currentOffer: CurrentOffer;
   currentOfferReviews: Reviews;
   nearOffers: Offers;
   isCurrentOfferLoading: LoadingStatus;
