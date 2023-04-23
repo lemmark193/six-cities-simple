@@ -11,10 +11,15 @@ import OffersList from '../../components/offers-list/offers-list';
 // Hooks
 import {useParams} from 'react-router-dom';
 import {useRoomData} from '../../hooks/useRoomData';
+import {useAppSelector} from '../../hooks/useAppSelector';
+
+// Constants
+import {AuthStatus} from '../../constants';
 
 function RoomPage(): JSX.Element {
   const {id} = useParams() as {id: string};
   const {offer, reviews, nearOffers, isLoading} = useRoomData(+id);
+  const authStatus = useAppSelector((state) => state.authStatus);
 
   if (isLoading) {
     return <LoadingMessage />;
@@ -34,7 +39,8 @@ function RoomPage(): JSX.Element {
         <DetailedOffer offer={offer}>
           <section className="property__reviews reviews">
             <ReviewsList reviews={reviews} />
-            <ReviewForm />
+
+            {authStatus === AuthStatus.Auth && <ReviewForm />}
           </section>
         </DetailedOffer>
         <Map offers={nearOffers} city={offer.city} blockClassName='property'/>
