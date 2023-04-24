@@ -8,6 +8,7 @@ enum APIRoute {
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+  Reviews = '/comments',
 }
 
 enum AuthStatus {
@@ -28,7 +29,20 @@ const UrlMapMarker = {
   Active: 'img/pin-active.svg',
 } as const;
 
-const RATING_MAX_VALUE = 5;
+const ReviewFormFieldName = {
+  Rating: 'rating',
+  Review: 'comment',
+} as const;
+
+const Rating = {
+  Min: 1,
+  Max: 5,
+} as const;
+
+const CommentLength = {
+  Min: 50,
+  Max: 300,
+} as const;
 
 const MONTHS = [
   'January',
@@ -53,7 +67,9 @@ export {
   AuthStatus,
   OfferType,
   UrlMapMarker,
-  RATING_MAX_VALUE,
+  ReviewFormFieldName,
+  Rating,
+  CommentLength,
   MONTHS,
   AVATAR_URL,
 };

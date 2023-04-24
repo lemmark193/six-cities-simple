@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import App from './components/app/app';
 
 // data
-import {reviews} from './mocks/reviews';
 import {store} from './store/store';
 
 // functions
@@ -20,7 +19,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App reviews={reviews} />
+      <App />
     </Provider>
   </React.StrictMode>,
 );

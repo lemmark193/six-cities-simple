@@ -1,5 +1,20 @@
 import {MONTHS, AVATAR_URL} from './constants';
 
+export const isValidStringLength = (
+  string: string,
+  minLength: number,
+  maxLength: number,
+): boolean => {
+  const length = string.length;
+  return length >= minLength && length <= maxLength;
+};
+
+export const isNumberFromRange = (
+  number: number,
+  min: number,
+  max: number
+): boolean => number >= min && number <= max;
+
 export const getThingsCountString = (
   count: number,
   oneThingString: string,
