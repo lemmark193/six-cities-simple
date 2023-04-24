@@ -1,12 +1,12 @@
-import {useState, FormEventHandler} from 'react';
+import {useState, FormEventHandler, useEffect} from 'react';
+import {useAppSelector} from './useAppSelector';
 import {ReviewFormFieldName} from '../constants';
+import {ReveiwState, ReviewFormInputElement} from '../types/review-form';
 
-type StateType = {
-  [ReviewFormFieldName.Rating]: number;
-  [ReviewFormFieldName.Review]: string;
-}
-
-type ReviewFormInputElement = HTMLInputElement | HTMLTextAreaElement;
+const initialState: ReveiwState = {
+  [ReviewFormFieldName.Rating]: 0,
+  [ReviewFormFieldName.Review]: '',
+};
 
 const getEntriesForState = (formElement: ReviewFormInputElement) => {
   const {name, value} = formElement;
@@ -21,11 +21,16 @@ const getEntriesForState = (formElement: ReviewFormInputElement) => {
   }
 };
 
-export function useReviewFormState(): [StateType, FormEventHandler] {
-  const [state, setState] = useState<StateType>({
-    [ReviewFormFieldName.Rating]: 0,
-    [ReviewFormFieldName.Review]: '',
-  });
+export function useReviewFormState(): [ReveiwState, FormEventHandler] {
+  const [reviewState, setState] = useState(initialState);
+  const isPosting = useAppSelector((state) => state.isCommentPosting);
+  const isPostError = useAppSelector((state) => state.isCommentPostError);
+
+  useEffect(() => {
+    if (!isPosting && !isPostError) {
+      setState(initialState);
+    }
+  }, [isPosting, isPostError]);
 
   const handleChange: FormEventHandler<ReviewFormInputElement> = ({target}) => {
     const {name, value} = getEntriesForState(target as ReviewFormInputElement);
@@ -35,10 +40,10 @@ export function useReviewFormState(): [StateType, FormEventHandler] {
     }
 
     setState({
-      ...state,
+      ...reviewState,
       [name]: value,
     });
   };
 
-  return [state, handleChange];
+  return [reviewState, handleChange];
 }

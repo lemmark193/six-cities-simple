@@ -40,7 +40,7 @@ function RoomPage(): JSX.Element {
           <section className="property__reviews reviews">
             <ReviewsList reviews={reviews} />
 
-            {authStatus === AuthStatus.Auth && <ReviewForm />}
+            {authStatus === AuthStatus.Auth && <ReviewForm id={+id} />}
           </section>
         </DetailedOffer>
         <Map offers={nearOffers} city={offer.city} blockClassName='property'/>

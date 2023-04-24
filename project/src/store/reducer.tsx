@@ -8,6 +8,8 @@ import {
   loadOffers,
   requireAuth,
   setActiveOfferId,
+  setCommentPostErrorStatus,
+  setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
   setOffersLoadingStatus
 } from './action';
@@ -26,6 +28,9 @@ const initialState: State = {
   isCurrentOfferLoading: false,
 
   authStatus: AuthStatus.Unknown,
+
+  isCommentPosting: false,
+  isCommentPostError: false,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -56,5 +61,11 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuth, (state, action) => {
       state.authStatus = action.payload;
+    })
+    .addCase(setCommentPostingStatus, (state, action) => {
+      state.isCommentPosting = action.payload;
+    })
+    .addCase(setCommentPostErrorStatus, (state, action) => {
+      state.isCommentPostError = action.payload;
     });
 });

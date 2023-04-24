@@ -31,10 +31,18 @@ const UrlMapMarker = {
 
 const ReviewFormFieldName = {
   Rating: 'rating',
-  Review: 'review',
+  Review: 'comment',
 } as const;
 
-const RATING_MAX_VALUE = 5;
+const Rating = {
+  Min: 1,
+  Max: 5,
+} as const;
+
+const CommentLength = {
+  Min: 50,
+  Max: 300,
+} as const;
 
 const MONTHS = [
   'January',
@@ -60,7 +68,8 @@ export {
   OfferType,
   UrlMapMarker,
   ReviewFormFieldName,
-  RATING_MAX_VALUE,
+  Rating,
+  CommentLength,
   MONTHS,
   AVATAR_URL,
 };

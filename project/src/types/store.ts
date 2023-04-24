@@ -9,6 +9,10 @@ export type LoadingStatus = boolean;
 
 export type CurrentOffer = Offer | null;
 
+export type CommentPostErrorStatus = boolean;
+
+export type CommentPostingStatus = boolean;
+
 export type State = {
   city: CityInfo;
   activeOfferId: ActiveOfferId;
@@ -21,6 +25,9 @@ export type State = {
   isCurrentOfferLoading: LoadingStatus;
 
   authStatus: AuthStatus;
+
+  isCommentPosting: CommentPostingStatus;
+  isCommentPostError: CommentPostErrorStatus;
 };
 
 export type AppDispatch = typeof store.dispatch;
