@@ -24,6 +24,15 @@ enum OfferType {
   Hotel = 'hotel',
 }
 
+enum SortType {
+  Popular = 'popular',
+  PriceLow = 'priceLowToHigh',
+  PriceHigh = 'priceHighToLow',
+  Rating = 'ratingTop',
+}
+
+const INITIAL_SORT_TYPE = SortType.Popular;
+
 const UrlMapMarker = {
   Default: 'img/pin.svg',
   Active: 'img/pin-active.svg',
@@ -66,6 +75,8 @@ export {
   APIRoute,
   AuthStatus,
   OfferType,
+  SortType,
+  INITIAL_SORT_TYPE,
   UrlMapMarker,
   ReviewFormFieldName,
   Rating,

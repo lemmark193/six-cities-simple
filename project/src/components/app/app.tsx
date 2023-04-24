@@ -12,7 +12,7 @@ import AuthPage from '../../pages/auth-page/auth-page';
 
 // Hooks & functions
 import {useAppSelector} from '../../hooks/useAppSelector';
-import {selectByCity} from '../../store/selector';
+import {selectByCity} from '../../store/selectors';
 
 // Constants
 import {AppRoute} from '../../constants';
