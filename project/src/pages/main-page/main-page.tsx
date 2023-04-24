@@ -38,7 +38,7 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
       <div className="cities">
         <div className={classnames(
           'cities__places-container',
-          {'cities__places-container--empty': isOffersLoading},
+          {'cities__places-container--empty': isOffersLoading || offers.length === 0},
           'container',
         )}
         >
