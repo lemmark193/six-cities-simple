@@ -43,6 +43,8 @@ const ReviewFormFieldName = {
   Review: 'comment',
 } as const;
 
+const REVIEWS_MAX_COUNT = 10;
+
 const Rating = {
   Min: 1,
   Max: 5,
@@ -79,6 +81,7 @@ export {
   INITIAL_SORT_TYPE,
   UrlMapMarker,
   ReviewFormFieldName,
+  REVIEWS_MAX_COUNT,
   Rating,
   CommentLength,
   MONTHS,

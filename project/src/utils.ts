@@ -27,6 +27,8 @@ export const getThingsCountString = (
   return `${count} ${thingsString}`;
 };
 
+export const getTimestamp = (date: string) => new Date(date).getTime();
+
 export const convertDate = (dateString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
