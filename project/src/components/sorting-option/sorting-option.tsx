@@ -7,10 +7,16 @@ type SortingOptionProps = {
   sortType: SortType;
   currentSortType: SortType;
   text: string;
+  onClick: () => void;
 }
 
-function SortingOption({sortType, currentSortType, text}: SortingOptionProps): JSX.Element {
+function SortingOption({sortType, currentSortType, text, onClick}: SortingOptionProps): JSX.Element {
   const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    onClick();
+    dispatch(setSortType(sortType));
+  };
 
   return (
     <li
@@ -19,7 +25,7 @@ function SortingOption({sortType, currentSortType, text}: SortingOptionProps): J
         {'places__option--active': sortType === currentSortType},
       )}
       tabIndex={0}
-      onClick={() => dispatch(setSortType(sortType))}
+      onClick={handleClick}
     >
       {text}
     </li>

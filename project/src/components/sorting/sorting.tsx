@@ -15,6 +15,8 @@ function Sorting(): JSX.Element {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const currentSortType = useAppSelector((state) => state.sortType);
 
+  const handleClick = () => setIsOpened(!isOpened);
+
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -22,7 +24,7 @@ function Sorting(): JSX.Element {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={() => setIsOpened(!isOpened)}
+        onClick={handleClick}
       >
         &nbsp;{SortTypeText[currentSortType]}
 
@@ -45,6 +47,7 @@ function Sorting(): JSX.Element {
               sortType={type}
               currentSortType={currentSortType}
               text={text}
+              onClick={handleClick}
             />
           );})}
       </ul>
