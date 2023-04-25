@@ -15,6 +15,9 @@ export const isNumberFromRange = (
   max: number
 ): boolean => number >= min && number <= max;
 
+export const capitalizeFirstLetter = (string: string)
+  : string => `${string[0].toUpperCase()}${string.slice(1)}`;
+
 export const getThingsCountString = (
   count: number,
   oneThingString: string,

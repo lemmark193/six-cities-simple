@@ -8,6 +8,7 @@ import {AppRoute} from '../../constants';
 // Hooks & Functions
 import {useAppDispatch} from '../../hooks/useAppDispatch';
 import {setActiveOfferId} from '../../store/action';
+import {capitalizeFirstLetter} from '../../utils';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -66,7 +67,7 @@ function OfferCard({offer, blockClassName}: AdCardProps): JSX.Element {
         <h2 className="place-card__name">
           <Link to={roomLink}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );

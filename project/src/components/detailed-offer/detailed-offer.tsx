@@ -3,7 +3,7 @@ import {Fragment} from 'react';
 import RatingBar from '../rating-bar/rating-bar';
 
 // Utils
-import {getThingsCountString} from '../../utils';
+import {capitalizeFirstLetter, getThingsCountString} from '../../utils';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -67,7 +67,7 @@ function DetailedOffer({offer, children}: DetailedOfferProps): JSX.Element {
 
           <ul className="property__features">
             <li className="property__feature property__feature--entire">
-              {type}
+              {capitalizeFirstLetter(type)}
             </li>
             <li className="property__feature property__feature--bedrooms">
               {getThingsCountString(bedrooms, 'Bedroom')}
