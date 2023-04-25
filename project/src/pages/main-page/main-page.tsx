@@ -1,6 +1,6 @@
 // Components
 import {Helmet} from 'react-helmet-async';
-import LoadingMessage from '../../components/loading-message/loading-message';
+import OffersLeftElement from '../../components/offers-left-element/offers-left-element';
 import OffersSection from '../../components/offers-section/offers-section';
 import Map from '../../components/map/map';
 import TabsList from '../../components/tabs-list/tabs-list';
@@ -19,12 +19,13 @@ type MainPageProps = {
 
 function MainPage({offers, city}: MainPageProps): JSX.Element {
   const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
+  const isEmptyOffers = offers.length === 0;
 
   return (
     <main className={classnames(
       'page__main',
       'page__main--index',
-      {'page__main--index-empty': isOffersLoading}
+      {'page__main--index-empty': isOffersLoading || isEmptyOffers}
     )}
     >
       <Helmet>
@@ -38,17 +39,17 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
       <div className="cities">
         <div className={classnames(
           'cities__places-container',
-          {'cities__places-container--empty': isOffersLoading || offers.length === 0},
+          {'cities__places-container--empty': isOffersLoading || isEmptyOffers},
           'container',
         )}
         >
-
-          {isOffersLoading
-            ? <LoadingMessage/>
-            : <OffersSection city={city} offers={offers} blockClassName='cities' />}
+          <OffersLeftElement isOffersLoading={isOffersLoading} isEmptyOffers={isEmptyOffers}>
+            <OffersSection city={city} offers={offers} blockClassName='cities' />
+          </OffersLeftElement>
 
           <div className="cities__right-section">
-            {!isOffersLoading && <Map city={city} offers={offers} blockClassName='cities' />}
+            {(!isOffersLoading && !isEmptyOffers)
+              && <Map city={city} offers={offers} blockClassName='cities' />}
           </div>
         </div>
       </div>
