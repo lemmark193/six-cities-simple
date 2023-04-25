@@ -11,10 +11,11 @@ import {
   setCommentPostErrorStatus,
   setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
-  setOffersLoadingStatus
+  setOffersLoadingStatus,
+  setSortType
 } from './action';
 import {State} from '../types/store';
-import {AuthStatus} from '../constants';
+import {AuthStatus, INITIAL_SORT_TYPE} from '../constants';
 
 const initialState: State = {
   city: City.Paris,
@@ -26,6 +27,8 @@ const initialState: State = {
   currentOfferReviews: [],
   nearOffers: [],
   isCurrentOfferLoading: false,
+
+  sortType: INITIAL_SORT_TYPE,
 
   authStatus: AuthStatus.Unknown,
 
@@ -67,5 +70,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setCommentPostErrorStatus, (state, action) => {
       state.isCommentPostError = action.payload;
+    })
+    .addCase(setSortType, (state, action) => {
+      state.sortType = action.payload;
     });
 });
