@@ -3,8 +3,12 @@ import {Helmet} from 'react-helmet-async';
 import {useAppDispatch} from '../../hooks/useAppDispatch';
 import {AuthData} from '../../types/auth';
 import {loginAction} from '../../store/api-actions';
+import {useAppSelector} from '../../hooks/useAppSelector';
+import {AppRoute, AuthStatus} from '../../constants';
+import {Navigate} from 'react-router-dom';
 
 function AuthPage(): JSX.Element {
+  const authStatus = useAppSelector((state) => state.authStatus);
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -24,6 +28,10 @@ function AuthPage(): JSX.Element {
       });
     }
   };
+
+  if (authStatus === AuthStatus.Auth) {
+    return <Navigate to={AppRoute.Root}/>;
+  }
 
   return (
     <main className="page__main page__main--login">
