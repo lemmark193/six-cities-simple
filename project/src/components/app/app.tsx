@@ -4,7 +4,6 @@ import {HelmetProvider} from 'react-helmet-async';
 
 // Components & Pages
 import Layout from '../layout/layout';
-import PrivateRoute from '../private-route/private-route';
 import MainPage from '../../pages/main-page/main-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
@@ -33,11 +32,7 @@ function App(): JSX.Element {
 
             <Route
               path={AppRoute.Login}
-              element={
-                <PrivateRoute>
-                  <AuthPage />
-                </PrivateRoute>
-              }
+              element={<AuthPage />}
             />
 
             <Route
