@@ -22,7 +22,7 @@ function OffersSection({city, offers, blockClassName}: OffersSectionProps): JSX.
       <Sorting />
 
       <div className="cities__places-list places__list tabs__content">
-        <OffersList offers={offers} blockClassName={blockClassName} />
+        <OffersList offers={offers} blockClassName={blockClassName} isHovered />
       </div>
     </section>
   );

@@ -73,9 +73,6 @@ function Map({city, offers, blockClassName}: MapProps): JSX.Element {
     <section
       className={`${blockClassName}__map map`}
       ref={mapRef}
-      style={{
-        height: '800px',
-      }}
     />
   );
 }

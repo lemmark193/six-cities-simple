@@ -1,4 +1,5 @@
 import {Fragment} from 'react';
+import {useAppSelector} from '../../hooks/useAppSelector';
 import {useReviewFormState} from '../../hooks/useReviewFormState';
 import {useReviewFormSubmit} from '../../hooks/useReviewFormSubmit';
 import {ReviewFormFieldName} from '../../constants';
@@ -17,7 +18,9 @@ type ReviewFormProps = {
 
 function ReviewForm({id}: ReviewFormProps): JSX.Element {
   const [reviewState, handleChange] = useReviewFormState();
-  const [isEnableSubmit, handleSubmit] = useReviewFormSubmit({id, reviewState});
+
+  const isPosting = useAppSelector((state) => state.isCommentPosting);
+  const [isEnableSubmit, handleSubmit] = useReviewFormSubmit({id, reviewState, isPosting});
 
   return (
     <form
@@ -41,8 +44,16 @@ function ReviewForm({id}: ReviewFormProps): JSX.Element {
                 id={`${value}-stars`}
                 checked={reviewState[ReviewFormFieldName.Rating] === value}
                 onChange={handleChange}
+                disabled={isPosting}
               />
-              <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={title}>
+
+              <label className="reviews__rating-label form__rating-label"
+                htmlFor={`${value}-stars`}
+                title={title}
+                style={isPosting
+                  ? {pointerEvents: 'none'}
+                  : undefined}
+              >
                 <svg className="form__star-image" width="37" height="33">
                   <use xlinkHref="#icon-star"></use>
                 </svg>
@@ -58,6 +69,7 @@ function ReviewForm({id}: ReviewFormProps): JSX.Element {
         value={reviewState[ReviewFormFieldName.Review]}
         placeholder="Tell how was your stay, what you like and what can be improved"
         onInput={handleChange}
+        disabled={isPosting}
       />
 
       <div className="reviews__button-wrapper">

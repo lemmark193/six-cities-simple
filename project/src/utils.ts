@@ -1,4 +1,4 @@
-import {MONTHS, AVATAR_URL} from './constants';
+import {MONTHS} from './constants';
 
 export const isValidStringLength = (
   string: string,
@@ -27,6 +27,8 @@ export const getThingsCountString = (
   return `${count} ${thingsString}`;
 };
 
+export const getTimestamp = (date: string) => new Date(date).getTime();
+
 export const convertDate = (dateString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -38,6 +40,3 @@ export const convertDate = (dateString: string) => {
     humanized: `${MONTHS[monthIndex]} ${year}`,
   };
 };
-
-export const generateAvatar = (size: number): string =>
-  `${AVATAR_URL}${size}/?rnd=${Math.random()}`;

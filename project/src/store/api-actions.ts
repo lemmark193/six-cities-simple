@@ -1,7 +1,19 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {APIRoute, AuthStatus} from '../constants';
-import {loadNearOffers, loadOfferById, loadOfferReviews, loadOffers, requireAuth, setCommentPostErrorStatus, setCommentPostingStatus, setCurrentOfferLoadingStatus, setOffersLoadingStatus} from './action';
+import {
+  deleteUser,
+  loadUser,
+  loadNearOffers,
+  loadOfferById,
+  loadOfferReviews,
+  loadOffers,
+  requireAuth,
+  setCommentPostErrorStatus,
+  setCommentPostingStatus,
+  setCurrentOfferLoadingStatus,
+  setOffersLoadingStatus,
+} from './action';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
@@ -62,8 +74,10 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   'checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      await api.get(APIRoute.Login);
+      const {data: {email}} = await api.get<UserData>(APIRoute.Login);
+
       dispatch(requireAuth(AuthStatus.Auth));
+      dispatch(loadUser(email));
     } catch {
       dispatch(requireAuth(AuthStatus.NoAuth));
     }
@@ -76,10 +90,17 @@ export const loginAction = createAsyncThunk<void, AuthData, {
   extra: AxiosInstance;
 }>(
   'login',
-  async ({login: email, password}, {dispatch, extra: api}) => {
-    const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
+  async ({login, password}, {dispatch, extra: api}) => {
+    const {data} = await api.post<UserData>(
+      APIRoute.Login,
+      {email: login, password},
+    );
+    const {token, email} = data;
+
     saveToken(token);
+
     dispatch(requireAuth(AuthStatus.Auth));
+    dispatch(loadUser(email));
   },
 );
 
@@ -91,8 +112,11 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   'logout',
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
+
     removeToken();
+
     dispatch(requireAuth(AuthStatus.NoAuth));
+    dispatch(deleteUser());
   },
 );
 

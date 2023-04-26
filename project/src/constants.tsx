@@ -43,6 +43,8 @@ const ReviewFormFieldName = {
   Review: 'comment',
 } as const;
 
+const REVIEWS_MAX_COUNT = 10;
+
 const Rating = {
   Min: 1,
   Max: 5,
@@ -68,8 +70,6 @@ const MONTHS = [
   'December',
 ];
 
-const AVATAR_URL = 'https://i.pravatar.cc/';
-
 export {
   AppRoute,
   APIRoute,
@@ -79,8 +79,8 @@ export {
   INITIAL_SORT_TYPE,
   UrlMapMarker,
   ReviewFormFieldName,
+  REVIEWS_MAX_COUNT,
   Rating,
   CommentLength,
   MONTHS,
-  AVATAR_URL,
 };

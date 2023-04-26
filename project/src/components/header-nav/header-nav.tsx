@@ -4,6 +4,7 @@ import {AppRoute, AuthStatus} from '../../constants';
 import {useAppSelector} from '../../hooks/useAppSelector';
 
 function HeaderNav(): JSX.Element {
+  const user = useAppSelector((state) => state.user);
   const authStatus = useAppSelector((state) => state.authStatus);
   const isAuth = authStatus === AuthStatus.Auth;
 
@@ -15,7 +16,7 @@ function HeaderNav(): JSX.Element {
             <div className="header__avatar-wrapper user__avatar-wrapper"></div>
 
             {isAuth
-              ? <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+              ? <span className="header__user-name user__name">{user}</span>
               : <span className="header__login">Sign in</span>}
           </Link>
         </li>

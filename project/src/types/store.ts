@@ -13,6 +13,8 @@ export type CommentPostErrorStatus = boolean;
 
 export type CommentPostingStatus = boolean;
 
+export type User = string | null;
+
 export type State = {
   city: CityInfo;
   activeOfferId: ActiveOfferId;
@@ -26,6 +28,7 @@ export type State = {
 
   sortType: SortType;
 
+  user: User;
   authStatus: AuthStatus;
 
   isCommentPosting: CommentPostingStatus;

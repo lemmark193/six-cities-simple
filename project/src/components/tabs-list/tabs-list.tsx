@@ -1,6 +1,7 @@
 import TabLink from '../tab-link/tab-link';
 import {City} from '../../mocks/offers';
 import {CityInfo} from '../../types/offers';
+import classnames from 'classnames';
 
 type TabsListProps = {
   city: CityInfo;
@@ -14,8 +15,12 @@ function TabsList({city}: TabsListProps): JSX.Element {
           {Object.keys(City).map((cityName) => (
             <li className="locations__item" key={cityName}>
               <TabLink
+                className={classnames(
+                  'locations__item-link',
+                  'tabs__item',
+                  {'tabs__item--active': cityName === city.name},
+                )}
                 cityName={cityName}
-                isActive={cityName === city.name}
               />
             </li>
           ))}
