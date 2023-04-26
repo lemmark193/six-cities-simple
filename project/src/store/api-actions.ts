@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {APIRoute, AuthStatus} from '../constants';
+import {APIRoute, AuthStatus, ERROR_MESSAGE_TIMEOUT} from '../constants';
 import {
   deleteUser,
   loadUser,
@@ -13,7 +13,9 @@ import {
   setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
   setOffersLoadingStatus,
+  setError,
 } from './action';
+import {store} from './store';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
@@ -139,10 +141,19 @@ export const postReviewAction = createAsyncThunk<void, {
 
       dispatch(loadOfferReviews(reviews.data));
       dispatch(setCommentPostErrorStatus(false));
-    } catch {
+    } catch (error) {
       dispatch(setCommentPostErrorStatus(true));
     } finally {
       dispatch(setCommentPostingStatus(false));
     }
+  },
+);
+
+export const clearErrorAction = createAsyncThunk(
+  'clearError',
+  () => {
+    setTimeout(() => {
+      store.dispatch(setError(null));
+    }, ERROR_MESSAGE_TIMEOUT);
   },
 );

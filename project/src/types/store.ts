@@ -15,6 +15,8 @@ export type CommentPostingStatus = boolean;
 
 export type User = string | null;
 
+export type ErrorType = string | null;
+
 export type State = {
   city: CityInfo;
   activeOfferId: ActiveOfferId;
@@ -33,6 +35,8 @@ export type State = {
 
   isCommentPosting: CommentPostingStatus;
   isCommentPostError: CommentPostErrorStatus;
+
+  error: ErrorType;
 };
 
 export type AppDispatch = typeof store.dispatch;

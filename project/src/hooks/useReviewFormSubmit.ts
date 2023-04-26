@@ -30,7 +30,6 @@ export function useReviewFormSubmit({id, reviewState, isPosting}: useReviewFormS
     );
   }, [rating, comment, isPosting]);
 
-
   const handleSubmit: FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
     dispatch(postReviewAction({id, reviewState}));

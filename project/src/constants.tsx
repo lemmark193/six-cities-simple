@@ -70,6 +70,8 @@ const MONTHS = [
   'December',
 ];
 
+const ERROR_MESSAGE_TIMEOUT = 4000;
+
 export {
   AppRoute,
   APIRoute,
@@ -83,4 +85,5 @@ export {
   Rating,
   CommentLength,
   MONTHS,
+  ERROR_MESSAGE_TIMEOUT,
 };

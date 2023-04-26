@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
+import ErrorMessage from './components/error-message/error-message';
 import App from './components/app/app';
 
 // data
@@ -19,6 +20,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorMessage />
       <App />
     </Provider>
   </React.StrictMode>,

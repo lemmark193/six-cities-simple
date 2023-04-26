@@ -1,7 +1,7 @@
 import {createAction} from '@reduxjs/toolkit';
 import {CityInfo, Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
-import {ActiveOfferId, CommentPostErrorStatus, CommentPostingStatus, LoadingStatus, User} from '../types/store';
+import {ActiveOfferId, CommentPostErrorStatus, CommentPostingStatus, ErrorType, LoadingStatus, User} from '../types/store';
 import {AuthStatus, SortType} from '../constants';
 
 export const changeCity = createAction<CityInfo>('changeCity');
@@ -31,3 +31,5 @@ export const setSortType = createAction<SortType>('setSortType');
 export const loadUser = createAction<User>('loadUser');
 
 export const deleteUser = createAction('deleteUser');
+
+export const setError = createAction<ErrorType>('setError');
