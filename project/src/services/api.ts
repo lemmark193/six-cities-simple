@@ -34,9 +34,6 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<{error: string}>) => {
-      // eslint-disable-next-line
-      console.log(error);
-
       if (error.response && shouldDisplayError(error.response)) {
         handleError(error.response.data.error);
       } else if (error.code === 'ERR_NETWORK') {
