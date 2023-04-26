@@ -5,7 +5,7 @@ import {fetchOfferByIdAction} from '../store/api-actions';
 import {Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
 import {CurrentOffer} from '../types/store';
-import { selectByComments } from '../store/selectors';
+import {selectByComments} from '../store/selectors';
 
 export function useRoomData(id: number): {
   offer: CurrentOffer;

@@ -6,6 +6,11 @@ import {loginAction} from '../../store/api-actions';
 import {useAppSelector} from '../../hooks/useAppSelector';
 import {AppRoute, AuthStatus} from '../../constants';
 import {Navigate} from 'react-router-dom';
+import TabLink from '../../components/tab-link/tab-link';
+import {City} from '../../mocks/offers';
+
+const isValidPassword = (password: string)
+  : boolean => /\p{L}/u.test(password) && /\d/.test(password);
 
 function AuthPage(): JSX.Element {
   const authStatus = useAppSelector((state) => state.authStatus);
@@ -15,7 +20,11 @@ function AuthPage(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
+    const {password} = authData;
+
+    if (isValidPassword(password)) {
+      dispatch(loginAction(authData));
+    }
   };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
@@ -70,11 +79,10 @@ function AuthPage(): JSX.Element {
             <button className="login__submit form__submit button" type="submit">Sign in</button>
           </form>
         </section>
+
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#TODO">
-              <span>Amsterdam</span>
-            </a>
+            <TabLink cityName={City.Amsterdam.name} toMainPage />
           </div>
         </section>
       </div>

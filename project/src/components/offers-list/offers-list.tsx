@@ -9,10 +9,11 @@ import {Offers} from '../../types/offers';
 type OffersListProps = {
   offers: Offers;
   blockClassName: string;
+  isHovered?: boolean;
 }
 
 
-function OffersList({offers, blockClassName}: OffersListProps): JSX.Element {
+function OffersList({offers, blockClassName, isHovered}: OffersListProps): JSX.Element {
   return (
     <Fragment>
       {offers.map((offer) => (
@@ -20,6 +21,7 @@ function OffersList({offers, blockClassName}: OffersListProps): JSX.Element {
           key={offer.id}
           offer={offer}
           blockClassName={blockClassName}
+          isHovered={isHovered}
         />
       ))}
     </Fragment>

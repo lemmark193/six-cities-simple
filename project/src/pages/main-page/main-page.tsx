@@ -20,12 +20,13 @@ type MainPageProps = {
 function MainPage({offers, city}: MainPageProps): JSX.Element {
   const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
   const isEmptyOffers = offers.length === 0;
+  const isEmptyPage = isEmptyOffers || isOffersLoading;
 
   return (
     <main className={classnames(
       'page__main',
       'page__main--index',
-      {'page__main--index-empty': isOffersLoading || isEmptyOffers}
+      {'page__main--index-empty': isEmptyPage}
     )}
     >
       <Helmet>
@@ -39,7 +40,7 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
       <div className="cities">
         <div className={classnames(
           'cities__places-container',
-          {'cities__places-container--empty': isOffersLoading || isEmptyOffers},
+          {'cities__places-container--empty': isEmptyPage},
           'container',
         )}
         >
@@ -48,7 +49,7 @@ function MainPage({offers, city}: MainPageProps): JSX.Element {
           </OffersLeftElement>
 
           <div className="cities__right-section">
-            {(!isOffersLoading && !isEmptyOffers)
+            {!isEmptyPage
               && <Map city={city} offers={offers} blockClassName='cities' />}
           </div>
         </div>

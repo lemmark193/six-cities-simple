@@ -9,19 +9,40 @@ import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
 
 // Hooks
+import {useEffect, useRef} from 'react';
 import {useParams} from 'react-router-dom';
 import {useRoomData} from '../../hooks/useRoomData';
 import {useAppSelector} from '../../hooks/useAppSelector';
 
 // Constants
 import {AuthStatus} from '../../constants';
+import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {setActiveOfferId} from '../../store/action';
 
 function RoomPage(): JSX.Element {
   const {id} = useParams() as {id: string};
   const {offer, reviews, nearOffers, isLoading} = useRoomData(+id);
   const authStatus = useAppSelector((state) => state.authStatus);
+  const activeOfferId = useAppSelector((state) => state.activeOfferId);
+  const isMountedRef = useRef<boolean>(false);
 
-  if (isLoading) {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    isMountedRef.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (offer) {
+      dispatch(setActiveOfferId(offer.id));
+    }
+  }, [offer, activeOfferId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  if (isLoading || !isMountedRef.current) {
     return <LoadingMessage />;
   }
 
@@ -43,7 +64,12 @@ function RoomPage(): JSX.Element {
             {authStatus === AuthStatus.Auth && <ReviewForm id={+id} />}
           </section>
         </DetailedOffer>
-        <Map offers={nearOffers} city={offer.city} blockClassName='property'/>
+
+        <Map
+          offers={nearOffers.concat(offer)}
+          city={offer.city}
+          blockClassName='property'
+        />
       </section>
 
       <div className="container">

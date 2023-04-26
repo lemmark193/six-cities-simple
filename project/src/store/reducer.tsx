@@ -2,10 +2,12 @@ import {City} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeCity,
+  deleteUser,
   loadNearOffers,
   loadOfferById,
   loadOfferReviews,
   loadOffers,
+  loadUser,
   requireAuth,
   setActiveOfferId,
   setCommentPostErrorStatus,
@@ -30,6 +32,7 @@ const initialState: State = {
 
   sortType: INITIAL_SORT_TYPE,
 
+  user: null,
   authStatus: AuthStatus.Unknown,
 
   isCommentPosting: false,
@@ -73,5 +76,11 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setSortType, (state, action) => {
       state.sortType = action.payload;
+    })
+    .addCase(loadUser, (state, action) => {
+      state.user = action.payload;
+    })
+    .addCase(deleteUser, (state) => {
+      state.user = null;
     });
 });

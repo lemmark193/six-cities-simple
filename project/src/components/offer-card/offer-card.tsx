@@ -16,9 +16,10 @@ import {Offer} from '../../types/offers';
 type AdCardProps = {
   offer: Offer;
   blockClassName: string;
+  isHovered?: boolean;
 }
 
-function OfferCard({offer, blockClassName}: AdCardProps): JSX.Element {
+function OfferCard({offer, blockClassName, isHovered = false}: AdCardProps): JSX.Element {
   const {
     id,
     previewImage,
@@ -31,9 +32,7 @@ function OfferCard({offer, blockClassName}: AdCardProps): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const mouseEnterHandler = (): void => {
-    dispatch(setActiveOfferId(id));
-  };
+  const handleMouseEnter = () => dispatch(setActiveOfferId(id));
 
   const premiumMarkElement = (
     <div className="place-card__mark">
@@ -44,7 +43,10 @@ function OfferCard({offer, blockClassName}: AdCardProps): JSX.Element {
   const roomLink = AppRoute.Room.replace(':id', id.toString());
 
   return (
-    <article className={`${blockClassName}__card place-card`} onMouseEnter={mouseEnterHandler}>
+    <article
+      className={`${blockClassName}__card place-card`}
+      onMouseEnter={isHovered ? handleMouseEnter : undefined}
+    >
 
       {isPremium && (premiumMarkElement)}
 

@@ -70,8 +70,6 @@ const MONTHS = [
   'December',
 ];
 
-const AVATAR_URL = 'https://i.pravatar.cc/';
-
 export {
   AppRoute,
   APIRoute,
@@ -85,5 +83,4 @@ export {
   Rating,
   CommentLength,
   MONTHS,
-  AVATAR_URL,
 };
