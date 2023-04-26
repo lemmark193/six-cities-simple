@@ -13,8 +13,9 @@ import {
   setCommentPostErrorStatus,
   setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
+  setError,
   setOffersLoadingStatus,
-  setSortType
+  setSortType,
 } from './action';
 import {State} from '../types/store';
 import {AuthStatus, INITIAL_SORT_TYPE} from '../constants';
@@ -37,6 +38,8 @@ const initialState: State = {
 
   isCommentPosting: false,
   isCommentPostError: false,
+
+  error: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -82,5 +85,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(deleteUser, (state) => {
       state.user = null;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     });
 });
