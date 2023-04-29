@@ -2,7 +2,7 @@ import {isValidStringLength, isNumberFromRange} from '../utils';
 import {Rating, CommentLength} from '../constants';
 import {ReveiwState} from '../types/review-form';
 import {FormEventHandler, useEffect, useState} from 'react';
-import {useAppDispatch} from './useAppDispatch';
+import {useAppDispatch} from './use-app-dispatch';
 import {postReviewAction} from '../store/api-actions';
 
 type useReviewFormSubmitParam = {

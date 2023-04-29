@@ -6,7 +6,7 @@ import Map from '../../components/map/map';
 import TabsList from '../../components/tabs-list/tabs-list';
 
 // Hooks & Functions
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useAppSelector} from '../../hooks/use-app-selector';
 import classnames from 'classnames';
 
 // Types

@@ -1,4 +1,4 @@
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {changeCity} from '../../store/action';
 import {City} from '../../mocks/offers';
 import {MouseEvent} from 'react';

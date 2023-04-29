@@ -1,5 +1,5 @@
 import {useState, FormEventHandler, useEffect} from 'react';
-import {useAppSelector} from './useAppSelector';
+import {useAppSelector} from './use-app-selector';
 import {ReviewFormFieldName} from '../constants';
 import {ReveiwState, ReviewFormInputElement} from '../types/review-form';
 

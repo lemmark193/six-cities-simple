@@ -1,7 +1,7 @@
 import {Fragment} from 'react';
-import {useAppSelector} from '../../hooks/useAppSelector';
-import {useReviewFormState} from '../../hooks/useReviewFormState';
-import {useReviewFormSubmit} from '../../hooks/useReviewFormSubmit';
+import {useAppSelector} from '../../hooks/use-app-selector';
+import {useReviewFormState} from '../../hooks/use-review-form-state';
+import {useReviewFormSubmit} from '../../hooks/use-review-form-submit';
 import {ReviewFormFieldName} from '../../constants';
 
 const rating = [

@@ -11,12 +11,12 @@ import OffersList from '../../components/offers-list/offers-list';
 // Hooks
 import {useEffect, useRef} from 'react';
 import {useParams} from 'react-router-dom';
-import {useRoomData} from '../../hooks/useRoomData';
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useRoomData} from '../../hooks/use-room-data';
+import {useAppSelector} from '../../hooks/use-app-selector';
 
 // Constants
 import {AuthStatus} from '../../constants';
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {setActiveOfferId} from '../../store/action';
 
 function RoomPage(): JSX.Element {

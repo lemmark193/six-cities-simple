@@ -1,9 +1,9 @@
 import {FormEvent, useRef} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {AuthData} from '../../types/auth';
 import {loginAction} from '../../store/api-actions';
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useAppSelector} from '../../hooks/use-app-selector';
 import {AppRoute, AuthStatus} from '../../constants';
 import {Navigate} from 'react-router-dom';
 import TabLink from '../../components/tab-link/tab-link';

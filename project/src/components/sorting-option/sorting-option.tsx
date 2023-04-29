@@ -1,4 +1,4 @@
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {SortType} from '../../constants';
 import {setSortType} from '../../store/action';
 import classnames from 'classnames';

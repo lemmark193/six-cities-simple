@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {MouseEventHandler} from 'react';
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {logoutAction} from '../../store/api-actions';
 
 function Logout(): JSX.Element {

@@ -10,7 +10,7 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import AuthPage from '../../pages/auth-page/auth-page';
 
 // Hooks & functions
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useAppSelector} from '../../hooks/use-app-selector';
 import {selectByCity} from '../../store/selectors';
 
 // Constants

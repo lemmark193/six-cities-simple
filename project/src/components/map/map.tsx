@@ -2,8 +2,8 @@
 import {useEffect, useRef} from 'react';
 
 // Hooks
-import useMap from '../../hooks/useMap';
-import {useAppSelector} from '../../hooks/useAppSelector';
+import useMap from '../../hooks/use-map';
+import {useAppSelector} from '../../hooks/use-app-selector';
 
 // Leaflet
 import {Icon, LayerGroup, Marker} from 'leaflet';

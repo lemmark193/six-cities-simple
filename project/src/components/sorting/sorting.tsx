@@ -1,7 +1,7 @@
 import SortingOption from '../sorting-option/sorting-option';
 import {SortType} from '../../constants';
 import {useState} from 'react';
-import {useAppSelector} from '../../hooks/useAppSelector';
+import {useAppSelector} from '../../hooks/use-app-selector';
 import classnames from 'classnames';
 
 const SortTypeText: Record<SortType, string> = {

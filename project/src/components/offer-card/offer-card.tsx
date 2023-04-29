@@ -6,7 +6,7 @@ import RatingBar from '../rating-bar/rating-bar';
 import {AppRoute} from '../../constants';
 
 // Hooks & Functions
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {setActiveOfferId} from '../../store/action';
 import {capitalizeFirstLetter} from '../../utils';
 
