@@ -1,6 +1,6 @@
 import {ReviewFormFieldName} from '../constants';
 
-export type ReveiwState = {
+export type ReviewState = {
   [ReviewFormFieldName.Rating]: number;
   [ReviewFormFieldName.Review]: string;
 }

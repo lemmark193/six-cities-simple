@@ -1,9 +1,9 @@
 import {useState, FormEventHandler, useEffect} from 'react';
 import {useAppSelector} from './use-app-selector';
 import {ReviewFormFieldName} from '../constants';
-import {ReveiwState, ReviewFormInputElement} from '../types/review-form';
+import {ReviewState, ReviewFormInputElement} from '../types/review-form';
 
-const initialState: ReveiwState = {
+const initialState: ReviewState = {
   [ReviewFormFieldName.Rating]: 0,
   [ReviewFormFieldName.Review]: '',
 };
@@ -21,7 +21,7 @@ const getEntriesForState = (formElement: ReviewFormInputElement) => {
   }
 };
 
-export function useReviewFormState(): [ReveiwState, FormEventHandler] {
+export function useReviewFormState(): [ReviewState, FormEventHandler] {
   const [reviewState, setState] = useState(initialState);
   const isPosting = useAppSelector((state) => state.isCommentPosting);
   const isPostError = useAppSelector((state) => state.isCommentPostError);

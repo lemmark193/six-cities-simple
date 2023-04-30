@@ -21,7 +21,7 @@ import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
 import {AppDispatch, State} from '../types/store';
 import {AuthData, UserData} from '../types/auth';
-import {ReveiwState} from '../types/review-form';
+import {ReviewState} from '../types/review-form';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -124,7 +124,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
 
 export const postReviewAction = createAsyncThunk<void, {
   id: number;
-  reviewState: ReveiwState;
+  reviewState: ReviewState;
 }, {
   dispatch: AppDispatch;
   state: State;

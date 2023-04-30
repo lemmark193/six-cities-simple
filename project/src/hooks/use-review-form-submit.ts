@@ -1,30 +1,30 @@
 import {isValidStringLength, isNumberFromRange} from '../utils';
 import {Rating, CommentLength} from '../constants';
-import {ReveiwState} from '../types/review-form';
+import {ReviewState} from '../types/review-form';
 import {FormEventHandler, useEffect, useState} from 'react';
 import {useAppDispatch} from './use-app-dispatch';
 import {postReviewAction} from '../store/api-actions';
 
 type useReviewFormSubmitParam = {
   id: number;
-  reviewState: ReveiwState;
+  reviewState: ReviewState;
   isPosting: boolean;
 }
 
 export function useReviewFormSubmit({id, reviewState, isPosting}: useReviewFormSubmitParam)
   : [boolean, FormEventHandler] {
   const {rating, comment} = reviewState;
-  const [isEnableSubmit, setIsAnableSubmit] = useState<boolean>(false);
+  const [isEnableSubmit, setIsEnableSubmit] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isPosting) {
-      setIsAnableSubmit(false);
+      setIsEnableSubmit(false);
       return;
     }
 
-    setIsAnableSubmit(
+    setIsEnableSubmit(
       isNumberFromRange(rating, Rating.Min, Rating.Max)
       && isValidStringLength(comment, CommentLength.Min, CommentLength.Max)
     );
