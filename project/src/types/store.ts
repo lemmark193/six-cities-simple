@@ -18,27 +18,27 @@ export type User = string | null;
 export type ErrorType = string | null;
 
 export type State = {
-  city: CityInfo;
-  activeOfferId: ActiveOfferId;
-  offers: Offers;
-  isOffersLoading: LoadingStatus;
-
   currentOffer: CurrentOffer;
   currentOfferReviews: Reviews;
   nearOffers: Offers;
   isCurrentOfferLoading: LoadingStatus;
 
-  sortType: SortType;
-
   isCommentPosting: CommentPostingStatus;
   isCommentPostError: CommentPostErrorStatus;
-
-  error: ErrorType;
 };
 
 export type UserProcessState = {
   user: User;
   authStatus: AuthStatus;
+}
+
+export type DataMainProcessState = {
+  city: CityInfo;
+  activeOfferId: ActiveOfferId;
+  offers: Offers;
+  isOffersLoading: LoadingStatus;
+  sortType: SortType;
+  error: ErrorType;
 }
 
 export type AppDispatch = typeof store.dispatch;

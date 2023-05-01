@@ -1,3 +1,5 @@
+import {City} from './mocks/offers';
+
 enum AppRoute {
   Root = '/',
   Login = '/login',
@@ -38,6 +40,8 @@ enum StoreNameSpace {
   DataRoom = 'DATA_ROOM',
   User = 'USER',
 }
+
+const DEFAULT_CITY = City.Paris;
 
 const UrlMapMarker = {
   Default: 'img/pin.svg',
@@ -86,6 +90,7 @@ export {
   SortType,
   INITIAL_SORT_TYPE,
   StoreNameSpace,
+  DEFAULT_CITY,
   UrlMapMarker,
   ReviewFormFieldName,
   REVIEWS_MAX_COUNT,

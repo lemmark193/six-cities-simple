@@ -5,13 +5,11 @@ import {
   loadNearOffers,
   loadOfferById,
   loadOfferReviews,
-  loadOffers,
   setCommentPostErrorStatus,
   setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
-  setOffersLoadingStatus,
-  setError,
 } from './action';
+import {setError} from './data-main-process/data-main-process';
 import {store} from './store';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
@@ -20,19 +18,16 @@ import {AppDispatch, State, User} from '../types/store';
 import {AuthData, UserData} from '../types/auth';
 import {ReviewState} from '../types/review-form';
 
-export const fetchOffersAction = createAsyncThunk<void, undefined, {
+export const fetchOffersAction = createAsyncThunk<Offers, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'fetchOffers',
-  async (_arg, {dispatch, extra: api}) => {
-    dispatch(setOffersLoadingStatus(true));
-
+  async (_arg, {extra: api}) => {
     const {data} = await api.get<Offers>(APIRoute.Offers);
 
-    dispatch(loadOffers(data));
-    dispatch(setOffersLoadingStatus(false));
+    return data;
   },
 );
 
