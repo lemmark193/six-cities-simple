@@ -2,13 +2,10 @@ import {City} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeCity,
-  deleteUser,
   loadNearOffers,
   loadOfferById,
   loadOfferReviews,
   loadOffers,
-  loadUser,
-  requireAuth,
   setActiveOfferId,
   setCommentPostErrorStatus,
   setCommentPostingStatus,
@@ -18,7 +15,7 @@ import {
   setSortType,
 } from './action';
 import {State} from '../types/store';
-import {AuthStatus, INITIAL_SORT_TYPE} from '../constants';
+import {INITIAL_SORT_TYPE} from '../constants';
 
 const initialState: State = {
   city: City.Paris,
@@ -32,9 +29,6 @@ const initialState: State = {
   isCurrentOfferLoading: false,
 
   sortType: INITIAL_SORT_TYPE,
-
-  user: null,
-  authStatus: AuthStatus.Unknown,
 
   isCommentPosting: false,
   isCommentPostError: false,
@@ -68,9 +62,6 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(setCurrentOfferLoadingStatus, (state, action) => {
       state.isCurrentOfferLoading = action.payload;
     })
-    .addCase(requireAuth, (state, action) => {
-      state.authStatus = action.payload;
-    })
     .addCase(setCommentPostingStatus, (state, action) => {
       state.isCommentPosting = action.payload;
     })
@@ -79,12 +70,6 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setSortType, (state, action) => {
       state.sortType = action.payload;
-    })
-    .addCase(loadUser, (state, action) => {
-      state.user = action.payload;
-    })
-    .addCase(deleteUser, (state) => {
-      state.user = null;
     })
     .addCase(setError, (state, action) => {
       state.error = action.payload;

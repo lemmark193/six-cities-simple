@@ -1,14 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {APIRoute, AuthStatus, ERROR_MESSAGE_TIMEOUT} from '../constants';
+import {APIRoute, ERROR_MESSAGE_TIMEOUT} from '../constants';
 import {
-  deleteUser,
-  loadUser,
   loadNearOffers,
   loadOfferById,
   loadOfferReviews,
   loadOffers,
-  requireAuth,
   setCommentPostErrorStatus,
   setCommentPostingStatus,
   setCurrentOfferLoadingStatus,
@@ -19,7 +16,7 @@ import {store} from './store';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
-import {AppDispatch, State} from '../types/store';
+import {AppDispatch, State, User} from '../types/store';
 import {AuthData, UserData} from '../types/auth';
 import {ReviewState} from '../types/review-form';
 
@@ -68,31 +65,26 @@ export const fetchOfferByIdAction = createAsyncThunk<void, number, {
   }
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, {
+export const checkAuthAction = createAsyncThunk<User, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'checkAuth',
-  async (_arg, {dispatch, extra: api}) => {
-    try {
-      const {data: {email}} = await api.get<UserData>(APIRoute.Login);
+  async (_arg, {extra: api}) => {
+    const {data: {email}} = await api.get<UserData>(APIRoute.Login);
 
-      dispatch(requireAuth(AuthStatus.Auth));
-      dispatch(loadUser(email));
-    } catch {
-      dispatch(requireAuth(AuthStatus.NoAuth));
-    }
+    return email;
   },
 );
 
-export const loginAction = createAsyncThunk<void, AuthData, {
+export const loginAction = createAsyncThunk<User, AuthData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'login',
-  async ({login, password}, {dispatch, extra: api}) => {
+  async ({login, password}, {extra: api}) => {
     const {data} = await api.post<UserData>(
       APIRoute.Login,
       {email: login, password},
@@ -101,8 +93,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
 
     saveToken(token);
 
-    dispatch(requireAuth(AuthStatus.Auth));
-    dispatch(loadUser(email));
+    return email;
   },
 );
 
@@ -114,11 +105,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   'logout',
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
-
     removeToken();
-
-    dispatch(requireAuth(AuthStatus.NoAuth));
-    dispatch(deleteUser());
   },
 );
 

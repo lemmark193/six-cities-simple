@@ -33,6 +33,12 @@ enum SortType {
 
 const INITIAL_SORT_TYPE = SortType.Popular;
 
+enum StoreNameSpace {
+  DataMain = 'DATA_MAIN',
+  DataRoom = 'DATA_ROOM',
+  User = 'USER',
+}
+
 const UrlMapMarker = {
   Default: 'img/pin.svg',
   Active: 'img/pin-active.svg',
@@ -79,6 +85,7 @@ export {
   OfferType,
   SortType,
   INITIAL_SORT_TYPE,
+  StoreNameSpace,
   UrlMapMarker,
   ReviewFormFieldName,
   REVIEWS_MAX_COUNT,

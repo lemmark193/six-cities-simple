@@ -30,13 +30,15 @@ export type State = {
 
   sortType: SortType;
 
-  user: User;
-  authStatus: AuthStatus;
-
   isCommentPosting: CommentPostingStatus;
   isCommentPostError: CommentPostErrorStatus;
 
   error: ErrorType;
 };
+
+export type UserProcessState = {
+  user: User;
+  authStatus: AuthStatus;
+}
 
 export type AppDispatch = typeof store.dispatch;
