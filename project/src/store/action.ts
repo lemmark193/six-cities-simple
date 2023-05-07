@@ -3,6 +3,8 @@ import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
 import {ActiveOfferId, CommentPostErrorStatus, CommentPostingStatus, LoadingStatus} from '../types/store';
 
+// TODO: Удалить лишние `action`
+
 export const setActiveOfferId = createAction<ActiveOfferId>('setActiveOfferId');
 
 export const loadOfferById = createAction<Offer>('loadOfferById');

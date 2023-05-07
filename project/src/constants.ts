@@ -39,6 +39,7 @@ enum StoreNameSpace {
   DataMain = 'DATA_MAIN',
   DataRoom = 'DATA_ROOM',
   User = 'USER',
+  Review = 'REVIEW',
 }
 
 const DEFAULT_CITY = City.Paris;

@@ -17,16 +17,6 @@ export type User = string | null;
 
 export type ErrorType = string | null;
 
-export type State = {
-  currentOffer: CurrentOffer;
-  currentOfferReviews: Reviews;
-  nearOffers: Offers;
-  isCurrentOfferLoading: LoadingStatus;
-
-  isCommentPosting: CommentPostingStatus;
-  isCommentPostError: CommentPostErrorStatus;
-};
-
 export type UserProcessState = {
   user: User;
   authStatus: AuthStatus;
@@ -40,5 +30,25 @@ export type DataMainProcessState = {
   sortType: SortType;
   error: ErrorType;
 }
+
+export type DataRoomProcessState = {
+  currentOffer: CurrentOffer;
+  currentOfferReviews: Reviews;
+  nearOffers: Offers;
+  isCurrentOfferLoading: LoadingStatus;
+}
+
+export type ReviewProcessState = {
+  isCommentPosting: CommentPostingStatus;
+  isCommentPostError: CommentPostErrorStatus;
+}
+
+export type RoomData = {
+  offer: Offer;
+  reviews: Reviews;
+  nearOffers: Offers;
+};
+
+export type State = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
