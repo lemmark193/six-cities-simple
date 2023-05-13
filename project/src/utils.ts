@@ -1,4 +1,6 @@
-import {MONTHS} from './constants';
+import {MONTHS, SortType} from './constants';
+import {Offers} from './types/offers';
+import {Review} from './types/reviews';
 
 export const isValidStringLength = (
   string: string,
@@ -39,4 +41,21 @@ export const convertDate = (dateString: string) => {
     datetime: `${year}-${monthIndex + 1}-${day}`,
     humanized: `${MONTHS[monthIndex]} ${year}`,
   };
+};
+
+export const SortOffersBy: Record<
+  SortType,
+  (offers: Offers) => Offers
+> = {
+  [SortType.Popular]: (offers) => offers,
+  [SortType.PriceLow]: (offers) => offers.slice().sort((a, b) => a.price - b.price),
+  [SortType.PriceHigh]: (offers) => offers.slice().sort((a, b) => b.price - a.price),
+  [SortType.Rating]: (offers) => offers.slice().sort((a, b) => b.rating - a.rating),
+};
+
+export const ByDate = (reviewA: Review, reviewB: Review) => {
+  const dateA = getTimestamp(reviewA.date);
+  const dateB = getTimestamp(reviewB.date);
+
+  return dateB - dateA;
 };
