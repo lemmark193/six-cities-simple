@@ -8,12 +8,13 @@ import {AppRoute, AuthStatus} from '../../constants';
 import {Navigate} from 'react-router-dom';
 import TabLink from '../../components/tab-link/tab-link';
 import {City} from '../../mocks/offers';
+import {getAuthStatus} from '../../store/user-process/selectors';
 
 const isValidPassword = (password: string)
   : boolean => /\p{L}/u.test(password) && /\d/.test(password);
 
 function AuthPage(): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authStatus);
+  const authStatus = useAppSelector(getAuthStatus);
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 

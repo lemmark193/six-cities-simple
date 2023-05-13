@@ -3,6 +3,7 @@ import {SortType} from '../../constants';
 import {useState} from 'react';
 import {useAppSelector} from '../../hooks/use-app-selector';
 import classnames from 'classnames';
+import {getSortType} from '../../store/data-main-process/selectors';
 
 const SortTypeText: Record<SortType, string> = {
   [SortType.Popular]: 'Popular',
@@ -13,7 +14,7 @@ const SortTypeText: Record<SortType, string> = {
 
 function Sorting(): JSX.Element {
   const [isOpened, setIsOpened] = useState<boolean>(false);
-  const currentSortType = useAppSelector((state) => state.sortType);
+  const currentSortType = useAppSelector(getSortType);
 
   const handleClick = () => setIsOpened(!isOpened);
 

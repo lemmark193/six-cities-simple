@@ -1,5 +1,7 @@
 import {CitiesEnum} from '../types/offers';
 
+// TODO: Перенести `City` из моковых данныx
+
 export const City: CitiesEnum = {
   Paris: {
     location: {

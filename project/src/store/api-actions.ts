@@ -1,8 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {APIRoute, ERROR_MESSAGE_TIMEOUT} from '../constants';
-import {setError} from './data-main-process/data-main-process';
-import {store} from './store';
+import {APIRoute} from '../constants';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
@@ -103,14 +101,5 @@ export const postReviewAction = createAsyncThunk<Reviews, {
     const {data: reviews} = await api.get<Reviews>(`${APIRoute.Reviews}/${id}`);
 
     return reviews;
-  },
-);
-
-export const clearErrorAction = createAsyncThunk(
-  'clearError',
-  () => {
-    setTimeout(() => {
-      store.dispatch(setError(null));
-    }, ERROR_MESSAGE_TIMEOUT);
   },
 );

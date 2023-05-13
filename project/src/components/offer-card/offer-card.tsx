@@ -7,8 +7,8 @@ import {AppRoute} from '../../constants';
 
 // Hooks & Functions
 import {useAppDispatch} from '../../hooks/use-app-dispatch';
-import {setActiveOfferId} from '../../store/action';
 import {capitalizeFirstLetter} from '../../utils';
+import {setActiveOfferId} from '../../store/data-main-process/data-main-process';
 
 // Types
 import {Offer} from '../../types/offers';
@@ -48,7 +48,7 @@ function OfferCard({offer, blockClassName, isHovered = false}: AdCardProps): JSX
       onMouseEnter={isHovered ? handleMouseEnter : undefined}
     >
 
-      {isPremium && (premiumMarkElement)}
+      {isPremium && premiumMarkElement}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={roomLink}>

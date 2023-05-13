@@ -16,5 +16,5 @@
   background-color: tomato;
   opacity: 0.9;
 
-  pointer-events: 'none';
+  pointer-events: none;
 }

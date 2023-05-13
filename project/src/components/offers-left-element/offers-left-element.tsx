@@ -1,8 +1,9 @@
 import LoadingMessage from '../loading-message/loading-message';
 import NoPlaces from '../no-places/no-places';
+import {LoadingStatus} from '../../types/store';
 
 type OffersLeftElementProps = {
-  isOffersLoading: boolean;
+  isOffersLoading: LoadingStatus;
   isEmptyOffers: boolean;
   children: JSX.Element;
 }

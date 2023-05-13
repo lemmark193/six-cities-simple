@@ -2,6 +2,7 @@ import {useState, FormEventHandler, useEffect} from 'react';
 import {useAppSelector} from './use-app-selector';
 import {ReviewFormFieldName} from '../constants';
 import {ReviewState, ReviewFormInputElement} from '../types/review-form';
+import {getCommentPostErrorStatus, getCommentPostingStatus} from '../store/review-process/selectors';
 
 const initialState: ReviewState = {
   [ReviewFormFieldName.Rating]: 0,
@@ -23,8 +24,8 @@ const getEntriesForState = (formElement: ReviewFormInputElement) => {
 
 export function useReviewFormState(): [ReviewState, FormEventHandler] {
   const [reviewState, setState] = useState(initialState);
-  const isPosting = useAppSelector((state) => state.isCommentPosting);
-  const isPostError = useAppSelector((state) => state.isCommentPostError);
+  const isPosting = useAppSelector(getCommentPostingStatus);
+  const isPostError = useAppSelector(getCommentPostErrorStatus);
 
   useEffect(() => {
     if (!isPosting && !isPostError) {

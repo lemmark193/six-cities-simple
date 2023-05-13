@@ -11,14 +11,14 @@ import AuthPage from '../../pages/auth-page/auth-page';
 
 // Hooks & functions
 import {useAppSelector} from '../../hooks/use-app-selector';
-import {selectByCity} from '../../store/selectors';
+import {getCity, getOffersByCity} from '../../store/data-main-process/selectors';
 
 // Constants
 import {AppRoute} from '../../constants';
 
 function App(): JSX.Element {
-  const city = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => selectByCity(state));
+  const city = useAppSelector(getCity);
+  const offers = useAppSelector(getOffersByCity);
 
   return (
     <HelmetProvider>

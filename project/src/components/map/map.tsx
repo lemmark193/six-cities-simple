@@ -1,9 +1,10 @@
 // React
 import {useEffect, useRef} from 'react';
 
-// Hooks
+// Hooks & functions
 import useMap from '../../hooks/use-map';
 import {useAppSelector} from '../../hooks/use-app-selector';
+import {getAciveOfferId} from '../../store/data-main-process/selectors';
 
 // Leaflet
 import {Icon, LayerGroup, Marker} from 'leaflet';
@@ -35,7 +36,7 @@ const iconActive = new Icon({
 });
 
 function Map({city, offers, blockClassName}: MapProps): JSX.Element {
-  const activeOfferId = useAppSelector((state) => state.activeOfferId);
+  const activeOfferId = useAppSelector(getAciveOfferId);
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   const markersGroupRef = useRef<LayerGroup | null>(null);

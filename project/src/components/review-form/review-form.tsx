@@ -2,6 +2,7 @@ import {Fragment} from 'react';
 import {useAppSelector} from '../../hooks/use-app-selector';
 import {useReviewFormState} from '../../hooks/use-review-form-state';
 import {useReviewFormSubmit} from '../../hooks/use-review-form-submit';
+import {getCommentPostingStatus} from '../../store/review-process/selectors';
 import {ReviewFormFieldName} from '../../constants';
 
 const rating = [
@@ -19,7 +20,7 @@ type ReviewFormProps = {
 function ReviewForm({id}: ReviewFormProps): JSX.Element {
   const [reviewState, handleChange] = useReviewFormState();
 
-  const isPosting = useAppSelector((state) => state.isCommentPosting);
+  const isPosting = useAppSelector(getCommentPostingStatus);
   const [isEnableSubmit, handleSubmit] = useReviewFormSubmit({id, reviewState, isPosting});
 
   return (

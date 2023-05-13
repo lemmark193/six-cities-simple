@@ -5,7 +5,7 @@ import {fetchOfferByIdAction} from '../store/api-actions';
 import {Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
 import {CurrentOffer} from '../types/store';
-import {selectByComments} from '../store/selectors';
+import {getCurrentOffer, getCurrentOfferLoadingStatus, getNearOffers, getReviews} from '../store/data-room-process/selectors';
 
 export function useRoomData(id: number): {
   offer: CurrentOffer;
@@ -13,10 +13,10 @@ export function useRoomData(id: number): {
   nearOffers: Offers;
   isLoading: boolean;
 } {
-  const offer = useAppSelector((state) => state.currentOffer);
-  const reviews = useAppSelector((state) => selectByComments(state));
-  const nearOffers = useAppSelector((state) => state.nearOffers);
-  const isLoading = useAppSelector((state) => state.isCurrentOfferLoading);
+  const offer = useAppSelector(getCurrentOffer);
+  const reviews = useAppSelector(getReviews);
+  const nearOffers = useAppSelector(getNearOffers);
+  const isLoading = useAppSelector(getCurrentOfferLoadingStatus);
 
   const dispatch = useAppDispatch();
 

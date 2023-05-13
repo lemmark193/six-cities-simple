@@ -8,22 +8,24 @@ import ReviewForm from '../../components/review-form/review-form';
 import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
 
-// Hooks
+// Hooks & functions
 import {useEffect, useRef} from 'react';
 import {useParams} from 'react-router-dom';
 import {useRoomData} from '../../hooks/use-room-data';
+import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {useAppSelector} from '../../hooks/use-app-selector';
+import {getAuthStatus} from '../../store/user-process/selectors';
+import {getAciveOfferId} from '../../store/data-main-process/selectors';
+import {setActiveOfferId} from '../../store/data-main-process/data-main-process';
 
 // Constants
 import {AuthStatus} from '../../constants';
-import {useAppDispatch} from '../../hooks/use-app-dispatch';
-import {setActiveOfferId} from '../../store/action';
 
 function RoomPage(): JSX.Element {
   const {id} = useParams() as {id: string};
   const {offer, reviews, nearOffers, isLoading} = useRoomData(+id);
-  const authStatus = useAppSelector((state) => state.authStatus);
-  const activeOfferId = useAppSelector((state) => state.activeOfferId);
+  const authStatus = useAppSelector(getAuthStatus);
+  const activeOfferId = useAppSelector(getAciveOfferId);
   const isMountedRef = useRef<boolean>(false);
 
   const dispatch = useAppDispatch();

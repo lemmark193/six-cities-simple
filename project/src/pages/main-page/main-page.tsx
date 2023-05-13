@@ -7,6 +7,7 @@ import TabsList from '../../components/tabs-list/tabs-list';
 
 // Hooks & Functions
 import {useAppSelector} from '../../hooks/use-app-selector';
+import {getOffersLoadingStatus} from '../../store/data-main-process/selectors';
 import classnames from 'classnames';
 
 // Types
@@ -18,7 +19,7 @@ type MainPageProps = {
 }
 
 function MainPage({offers, city}: MainPageProps): JSX.Element {
-  const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
+  const isOffersLoading = useAppSelector(getOffersLoadingStatus);
   const isEmptyOffers = offers.length === 0;
   const isEmptyPage = isEmptyOffers || isOffersLoading;
 

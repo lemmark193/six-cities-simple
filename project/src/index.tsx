@@ -10,8 +10,8 @@ import {store} from './store/store';
 // functions
 import {checkAuthAction, fetchOffersAction} from './store/api-actions';
 
-store.dispatch(fetchOffersAction());
 store.dispatch(checkAuthAction());
+store.dispatch(fetchOffersAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
