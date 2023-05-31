@@ -4,7 +4,7 @@ import {fetchOffersAction} from '../api-actions';
 import {ActiveOfferId, DataMainProcessState, ErrorType} from '../../types/store';
 import {CityInfo} from '../../types/offers';
 
-const initialState: DataMainProcessState = {
+export const initialState: DataMainProcessState = {
   city: DEFAULT_CITY,
   activeOfferId: null,
   offers: [],
