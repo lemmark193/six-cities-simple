@@ -1,4 +1,12 @@
-import {CitiesEnum} from '../types/offers';
+import {
+  datatype,
+  lorem,
+  image,
+  internet,
+  address,
+} from 'faker';
+import {CitiesEnum, Offer} from '../types/offers';
+import { OfferType } from '../constants';
 
 // TODO: Перенести `City` из моковых данныx
 
@@ -53,3 +61,29 @@ export const City: CitiesEnum = {
   },
 } as const;
 
+export const generateMockOffer = (): Offer => ({
+  bedrooms: datatype.number({min: 1, max: 5}),
+  city: City.Amsterdam,
+  description: lorem.sentence(5),
+  goods: Array.from({length: 3}, () => lorem.word()),
+  host: {
+    avatarUrl: internet.avatar(),
+    id: 10,
+    isPro: datatype.boolean(),
+    name: internet.userName(),
+  },
+  id: 0,
+  images: Array.from({length: 6}, () => image.imageUrl()),
+  isPremium: datatype.boolean(),
+  location: {
+    latitude: Number(address.latitude()),
+    longitude: Number(address.longitude()),
+    zoom: datatype.number({min: 5, max: 13}),
+  },
+  maxAdults: datatype.number(5),
+  previewImage: image.imageUrl(),
+  price: datatype.number(1000),
+  rating: datatype.number({min: 1, max: 5}),
+  title: lorem.words(2),
+  type: OfferType.Apartment,
+});

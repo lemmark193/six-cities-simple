@@ -26,6 +26,7 @@ export const dataMainProcess = createSlice({
     setSortType(state, action: PayloadAction<SortType>) {
       state.sortType = action.payload;
     },
+    // TODO: проверить используется ли `action`
     setError(state, action: PayloadAction<ErrorType>) {
       state.error = action.payload;
     },
