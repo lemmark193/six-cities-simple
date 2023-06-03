@@ -1,5 +1,6 @@
-import { DEFAULT_CITY, INITIAL_SORT_TYPE } from '../../constants';
-import { City, generateMockOffer } from '../../mocks/offers';
+import { DEFAULT_CITY, INITIAL_SORT_TYPE } from '../../data/constants';
+import { generateMockOffer } from '../../mocks/offers';
+import { City } from '../../data/cities';
 import { Offers } from '../../types/offers';
 import { DataMainProcessState } from '../../types/store';
 import { fetchOffersAction } from '../api-actions';

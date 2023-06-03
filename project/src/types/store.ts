@@ -1,4 +1,4 @@
-import {AuthStatus, SortType} from '../constants';
+import {AuthStatus, SortType} from '../data/constants';
 import {store} from '../store/store';
 import {CityInfo, Offer, Offers} from './offers';
 import {Reviews} from'./reviews';
@@ -13,12 +13,12 @@ export type CommentPostErrorStatus = boolean;
 
 export type CommentPostingStatus = boolean;
 
-export type User = string | null;
+export type UserLogin = string | null;
 
 export type ErrorType = string | null;
 
 export type UserProcessState = {
-  user: User;
+  user: UserLogin;
   authStatus: AuthStatus;
 }
 

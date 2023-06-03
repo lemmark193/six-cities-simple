@@ -14,7 +14,7 @@ import 'leaflet/dist/leaflet.css';
 import {CityInfo, Offers} from '../../types/offers';
 
 // Constants
-import {UrlMapMarker} from '../../constants';
+import {UrlMapMarker} from '../../data/constants';
 
 
 type MapProps = {

@@ -1,4 +1,4 @@
-import {StoreNameSpace} from '../../constants';
+import {StoreNameSpace} from '../../data/constants';
 import {State, CommentPostingStatus, CommentPostErrorStatus} from '../../types/store';
 
 export const getCommentPostingStatus = (state: State): CommentPostingStatus =>

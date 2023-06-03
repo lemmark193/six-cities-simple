@@ -3,7 +3,7 @@ import {useAppSelector} from '../../hooks/use-app-selector';
 import {useReviewFormState} from '../../hooks/use-review-form-state';
 import {useReviewFormSubmit} from '../../hooks/use-review-form-submit';
 import {getCommentPostingStatus} from '../../store/review-process/selectors';
-import {ReviewFormFieldName} from '../../constants';
+import {ReviewFormFieldName} from '../../data/constants';
 
 const rating = [
   'terribly',

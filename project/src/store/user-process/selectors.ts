@@ -1,7 +1,7 @@
-import {AuthStatus, StoreNameSpace} from '../../constants';
-import {State, User} from '../../types/store';
+import {AuthStatus, StoreNameSpace} from '../../data/constants';
+import {State, UserLogin} from '../../types/store';
 
-export const getUser = (state: State): User =>
+export const getUser = (state: State): UserLogin =>
   state[StoreNameSpace.User].user;
 
 export const getAuthStatus = (state: State): AuthStatus =>

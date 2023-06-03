@@ -1,6 +1,6 @@
 import {useState, FormEventHandler, useEffect} from 'react';
 import {useAppSelector} from './use-app-selector';
-import {ReviewFormFieldName} from '../constants';
+import {ReviewFormFieldName} from '../data/constants';
 import {ReviewState, ReviewFormInputElement} from '../types/review-form';
 import {getCommentPostErrorStatus, getCommentPostingStatus} from '../store/review-process/selectors';
 

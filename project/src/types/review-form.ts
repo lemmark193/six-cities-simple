@@ -1,4 +1,4 @@
-import {ReviewFormFieldName} from '../constants';
+import {ReviewFormFieldName} from '../data/constants';
 
 export type ReviewState = {
   [ReviewFormFieldName.Rating]: number;

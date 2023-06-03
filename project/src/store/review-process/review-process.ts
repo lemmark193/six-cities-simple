@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {postReviewAction} from '../api-actions';
-import {StoreNameSpace} from '../../constants';
+import {StoreNameSpace} from '../../data/constants';
 import {ReviewProcessState} from '../../types/store';
 
 const initialState: ReviewProcessState = {

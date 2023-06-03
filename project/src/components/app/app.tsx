@@ -14,7 +14,7 @@ import {useAppSelector} from '../../hooks/use-app-selector';
 import {getCity, getOffersByCity} from '../../store/data-main-process/selectors';
 
 // Constants
-import {AppRoute} from '../../constants';
+import {AppRoute} from '../../data/constants';
 
 function App(): JSX.Element {
   const city = useAppSelector(getCity);

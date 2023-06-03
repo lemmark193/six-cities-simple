@@ -1,10 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {APIRoute} from '../constants';
+import {APIRoute} from '../data/constants';
 import {removeToken, saveToken} from '../services/token';
 import {Offer, Offers} from '../types/offers';
 import {Reviews} from '../types/reviews';
-import {AppDispatch, RoomData, State, User} from '../types/store';
+import {AppDispatch, RoomData, State, UserLogin} from '../types/store';
 import {AuthData, UserData} from '../types/auth';
 import {ReviewState} from '../types/review-form';
 
@@ -42,7 +42,7 @@ export const fetchOfferByIdAction = createAsyncThunk<RoomData, number, {
   }
 );
 
-export const checkAuthAction = createAsyncThunk<User, undefined, {
+export const checkAuthAction = createAsyncThunk<UserLogin, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -55,7 +55,7 @@ export const checkAuthAction = createAsyncThunk<User, undefined, {
   },
 );
 
-export const loginAction = createAsyncThunk<User, AuthData, {
+export const loginAction = createAsyncThunk<UserLogin, AuthData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;

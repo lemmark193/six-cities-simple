@@ -1,8 +1,8 @@
 import {useAppDispatch} from '../../hooks/use-app-dispatch';
-import {City} from '../../mocks/offers';
+import { City } from '../../data/cities';
 import {MouseEvent} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {AppRoute} from '../../constants';
+import {AppRoute} from '../../data/constants';
 import {changeCity} from '../../store/data-main-process/data-main-process';
 
 type TabLinkProps = {

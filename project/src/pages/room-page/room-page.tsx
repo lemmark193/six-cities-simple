@@ -19,7 +19,7 @@ import {getAciveOfferId} from '../../store/data-main-process/selectors';
 import {setActiveOfferId} from '../../store/data-main-process/data-main-process';
 
 // Constants
-import {AuthStatus} from '../../constants';
+import {AuthStatus} from '../../data/constants';
 
 function RoomPage(): JSX.Element {
   const {id} = useParams() as {id: string};

@@ -1,5 +1,5 @@
 import {isValidStringLength, isNumberFromRange} from '../utils';
-import {Rating, CommentLength} from '../constants';
+import {Rating, CommentLength} from '../data/constants';
 import {ReviewState} from '../types/review-form';
 import {FormEventHandler, useEffect, useState} from 'react';
 import {useAppDispatch} from './use-app-dispatch';

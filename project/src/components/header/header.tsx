@@ -1,6 +1,6 @@
 import {Link, useLocation} from 'react-router-dom';
 import HeaderNav from '../header-nav/header-nav';
-import {AppRoute} from '../../constants';
+import {AppRoute} from '../../data/constants';
 
 function Header(): JSX.Element {
   const {pathname} = useLocation();

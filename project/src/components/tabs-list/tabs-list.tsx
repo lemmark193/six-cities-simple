@@ -1,5 +1,5 @@
 import TabLink from '../tab-link/tab-link';
-import {City} from '../../mocks/offers';
+import { City } from '../../data/cities';
 import {CityInfo} from '../../types/offers';
 import classnames from 'classnames';
 

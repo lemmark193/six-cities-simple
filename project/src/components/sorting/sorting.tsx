@@ -1,5 +1,5 @@
 import SortingOption from '../sorting-option/sorting-option';
-import {SortType} from '../../constants';
+import {SortType} from '../../data/constants';
 import {useState} from 'react';
 import {useAppSelector} from '../../hooks/use-app-selector';
 import classnames from 'classnames';

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import RatingBar from '../rating-bar/rating-bar';
 
 // Constants
-import {AppRoute} from '../../constants';
+import {AppRoute} from '../../data/constants';
 
 // Hooks & Functions
 import {useAppDispatch} from '../../hooks/use-app-dispatch';

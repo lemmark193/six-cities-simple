@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import Logout from '../logout/logout';
-import {AppRoute, AuthStatus} from '../../constants';
+import {AppRoute, AuthStatus} from '../../data/constants';
 import {useAppSelector} from '../../hooks/use-app-selector';
 import {getAuthStatus, getUser} from '../../store/user-process/selectors';
 

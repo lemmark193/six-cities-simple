@@ -1,4 +1,4 @@
-import {City} from './mocks/offers';
+import { City } from './cities';
 
 enum AppRoute {
   Root = '/',

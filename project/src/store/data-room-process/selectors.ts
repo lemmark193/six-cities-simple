@@ -1,4 +1,4 @@
-import {REVIEWS_MAX_COUNT, StoreNameSpace} from '../../constants';
+import {REVIEWS_MAX_COUNT, StoreNameSpace} from '../../data/constants';
 import {ByDate} from '../../utils';
 import {Reviews} from '../../types/reviews';
 import {State, CurrentOffer, LoadingStatus} from '../../types/store';

@@ -1,4 +1,4 @@
-import {MONTHS, SortType} from './constants';
+import {MONTHS, SortType} from './data/constants';
 import {Offers} from './types/offers';
 import {Review} from './types/reviews';
 

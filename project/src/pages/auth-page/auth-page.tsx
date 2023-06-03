@@ -4,10 +4,10 @@ import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {AuthData} from '../../types/auth';
 import {loginAction} from '../../store/api-actions';
 import {useAppSelector} from '../../hooks/use-app-selector';
-import {AppRoute, AuthStatus} from '../../constants';
+import {AppRoute, AuthStatus} from '../../data/constants';
 import {Navigate} from 'react-router-dom';
 import TabLink from '../../components/tab-link/tab-link';
-import {City} from '../../mocks/offers';
+import { City } from '../../data/cities';
 import {getAuthStatus} from '../../store/user-process/selectors';
 
 const isValidPassword = (password: string)

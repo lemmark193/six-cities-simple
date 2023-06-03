@@ -1,16 +1,10 @@
-import {OfferType} from '../constants';
+import {OfferType} from '../data/constants';
+import { User } from './user';
 
 type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
-}
-
-type Host = {
-  avatarUrl: string;
-  id: number;
-  isPro: boolean;
-  name: string;
 }
 
 export type CityInfo = {
@@ -27,7 +21,7 @@ export type Offer = {
   city: CityInfo;
   description: string;
   goods: string[];
-  host: Host;
+  host: User;
   id: number;
   images: string[];
   isPremium: boolean;

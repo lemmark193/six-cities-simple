@@ -1,5 +1,5 @@
 import {useAppDispatch} from '../../hooks/use-app-dispatch';
-import {SortType} from '../../constants';
+import {SortType} from '../../data/constants';
 import {setSortType} from '../../store/data-main-process/data-main-process';
 import classnames from 'classnames';
 

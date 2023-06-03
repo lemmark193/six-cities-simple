@@ -1,6 +1,6 @@
 import {ActiveOfferId, State} from '../../types/store';
 import {CityInfo, Offers} from '../../types/offers';
-import {SortType, StoreNameSpace} from '../../constants';
+import {SortType, StoreNameSpace} from '../../data/constants';
 import {SortOffersBy} from '../../utils';
 import {LoadingStatus} from '../../types/store';
 import {ErrorType} from '../../types/store';
