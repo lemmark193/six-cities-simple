@@ -2,7 +2,7 @@ import {FormEvent, useRef} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {useAppDispatch} from '../../hooks/use-app-dispatch';
 import {AuthData} from '../../types/auth';
-import {loginAction} from '../../store/api-actions';
+import {loginAction} from '../../store/api-actions/api-actions';
 import {useAppSelector} from '../../hooks/use-app-selector';
 import {AppRoute, AuthStatus} from '../../data/constants';
 import {Navigate} from 'react-router-dom';

@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {DEFAULT_CITY, INITIAL_SORT_TYPE, SortType, StoreNameSpace} from '../../data/constants';
-import {fetchOffersAction} from '../api-actions';
+import {fetchOffersAction} from '../api-actions/api-actions';
 import {ActiveOfferId, DataMainProcessState, ErrorType} from '../../types/store';
 import {CityInfo} from '../../types/offers';
 

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {MouseEventHandler} from 'react';
 import {useAppDispatch} from '../../hooks/use-app-dispatch';
-import {logoutAction} from '../../store/api-actions';
+import {logoutAction} from '../../store/api-actions/api-actions';
 
 function Logout(): JSX.Element {
   const dispatch = useAppDispatch();

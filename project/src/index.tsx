@@ -8,7 +8,7 @@ import App from './components/app/app';
 import {store} from './store/store';
 
 // functions
-import {checkAuthAction, fetchOffersAction} from './store/api-actions';
+import {checkAuthAction, fetchOffersAction} from './store/api-actions/api-actions';
 
 store.dispatch(checkAuthAction());
 store.dispatch(fetchOffersAction());

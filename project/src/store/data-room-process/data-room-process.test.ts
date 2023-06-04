@@ -1,6 +1,6 @@
 import { generateMockOffer, generateMockReviews } from '../../mocks/offers';
 import { DataRoomProcessState, RoomData } from '../../types/store';
-import { fetchOfferByIdAction, postReviewAction } from '../api-actions';
+import { fetchOfferByIdAction, postReviewAction } from '../api-actions/api-actions';
 import { dataRoomProcess } from './data-room-process';
 
 const fakeFetchOfferByIdActionPayload: RoomData = {

@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {DataRoomProcessState, RoomData} from '../../types/store';
 import {StoreNameSpace} from '../../data/constants';
-import {fetchOfferByIdAction, postReviewAction} from '../api-actions';
+import {fetchOfferByIdAction, postReviewAction} from '../api-actions/api-actions';
 import {Reviews} from '../../types/reviews';
 
 const initialState: DataRoomProcessState = {

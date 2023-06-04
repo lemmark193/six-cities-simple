@@ -3,7 +3,7 @@ import { generateMockOffer } from '../../mocks/offers';
 import { City } from '../../data/cities';
 import { Offers } from '../../types/offers';
 import { DataMainProcessState } from '../../types/store';
-import { fetchOffersAction } from '../api-actions';
+import { fetchOffersAction } from '../api-actions/api-actions';
 import {changeCity, dataMainProcess} from './data-main-process';
 
 const fakeOffers: Offers = Array.from({length: 3}, generateMockOffer);

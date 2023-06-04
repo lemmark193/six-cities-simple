@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {postReviewAction} from '../api-actions';
+import {postReviewAction} from '../api-actions/api-actions';
 import {StoreNameSpace} from '../../data/constants';
 import {ReviewProcessState} from '../../types/store';
 

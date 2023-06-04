@@ -3,7 +3,7 @@ import {Rating, CommentLength} from '../data/constants';
 import {ReviewState} from '../types/review-form';
 import {FormEventHandler, useEffect, useState} from 'react';
 import {useAppDispatch} from './use-app-dispatch';
-import {postReviewAction} from '../store/api-actions';
+import {postReviewAction} from '../store/api-actions/api-actions';
 
 type useReviewFormSubmitParam = {
   id: number;
